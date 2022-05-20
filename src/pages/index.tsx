@@ -1,7 +1,6 @@
 import {
   Text, Image, HStack
 } from '@chakra-ui/react'
-
 import { Hero } from '../components/Hero'
 import { Container } from '../components/Container'
 import { Main } from '../components/Main'
@@ -10,13 +9,13 @@ import { Search } from '../components/Search'
 import { ArrowBtn } from '../components/ArrowBtn'
 import { useState } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 const Index = () => {
   const [summonerName, setSummonerName] = useState("");
-  const submitName = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(summonerName)
-    window.location.href = `/summoner`;
+    window.location.href = `/summoner/${summonerName}`;
   };
 
   return (
@@ -28,7 +27,7 @@ const Index = () => {
         width={'20vw'}
         />
         <Hero />
-        <form onSubmit={submitName}>
+        <form onSubmit={handleSubmit}>
           <HStack style={divStyle}>
             <Search 
               onChange={(e) => setSummonerName(e.target.value)}
