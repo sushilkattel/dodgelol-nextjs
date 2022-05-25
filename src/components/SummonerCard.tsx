@@ -48,7 +48,7 @@ export const SummonerCard = (props: SummonerDetails) => {
   const [fQueue, setfQueue] = useState(props.fQueue);
   const sWinrate = Math.round((parseInt(props.sWin) / (parseInt(props.sWin)+ parseInt(props.sLoss))) * 100)
   const fWinrate = Math.round((parseInt(props.fWin) / (parseInt(props.fWin)+ parseInt(props.fLoss))) * 100)
-  console.log("Before: ", props.sQueue)
+  console.log("Rank: ", props.sRank)
   useEffect(() => {
     if(props.sQueue == undefined) {
       setsQueue("Ranked Solo")
@@ -71,8 +71,8 @@ export const SummonerCard = (props: SummonerDetails) => {
     <Box
       maxW={"25vw"}
       w={"25vw"}
-      maxH={"80vh"}
-      h={"80vh"}
+      maxH={"100%"}
+      h={"auto"}
       bg={useColorModeValue("white", "gray.800")}
       boxShadow={"2xl"}
       rounded={"lg"}
@@ -94,7 +94,7 @@ export const SummonerCard = (props: SummonerDetails) => {
         />
       </Flex>
 
-      <Box p={6}>
+      <Box p={6} mb={5}>
         <Stack spacing={0} align={"center"} mb={5}>
           <Heading fontSize={"4xl"} fontWeight={500} fontFamily={"body"}>
             {props.summonerName}
@@ -102,7 +102,7 @@ export const SummonerCard = (props: SummonerDetails) => {
           <Text color={"gray.500"} fontSize={"2xl"}>lvl {props.summonerLvl}</Text>
         </Stack>
         <HStack>
-        <Stack spacing={0} align={"center"} mb={-3} ml={5}>
+        <Stack spacing={0} align={"center"} mb={-5} ml={5}>
           <Text fontFamily={"body"} fontSize={'2xl'} fontWeight={400}>{sQueue}</Text>
           <Stack alignSelf={'baseline'} alignItems={'center'}>
             <Image 

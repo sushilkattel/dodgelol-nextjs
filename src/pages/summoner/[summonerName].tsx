@@ -1,4 +1,4 @@
-import { Text, Image, HStack } from "@chakra-ui/react";
+import { Text, Image, HStack, Box, useColorModeValue, Stack} from "@chakra-ui/react";
 import { Container } from "../../components/Container";
 import { Main } from "../../components/Main";
 import { SummonerCard } from "../../components/SummonerCard";
@@ -51,7 +51,8 @@ const SummonerDetails = () => {
   const lvl = data?.summonerLevel?.toString();
   return (
     <Container height="100vh">
-      <Main>
+      <Main alignSelf={'baseline'} marginLeft={'2em'}>
+        <HStack>
         <SummonerCard
           summonerIcon={icon}
           summonerName={name}
@@ -69,6 +70,25 @@ const SummonerDetails = () => {
           fWin={ranked[1]?.wins.toString()}
           fLoss={ranked[1]?.losses.toString()}
         />
+        <Stack 
+          maxW={"20vw"}
+          w={"70vw"}
+          maxH={"100%"}
+          h={"100%"}>
+          <Box
+            marginLeft={10}
+            maxW={"65vw"}
+            w={"70vw"}
+            maxH={"100%"}
+            h={"100%"}
+            bg={useColorModeValue("white", "gray.800")}
+            boxShadow={"2xl"}
+            rounded={"lg"}
+            overflow={"hidden"}
+          >
+        </Box>
+        </Stack>
+        </HStack>
       </Main>
     </Container>
   );
