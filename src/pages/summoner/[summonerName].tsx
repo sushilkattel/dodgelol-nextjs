@@ -4,7 +4,7 @@ import { Main } from "../../components/Main";
 import { SummonerCard } from "../../components/SummonerCard";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { getSummonerData } from "../../apiUtils";
+import { getSummonerData, getSummonerRanked } from "../../apiUtils";
 
 const SummonerDetails = () => {
   const [isLoading, setLoading] = useState(true);
@@ -19,28 +19,25 @@ const SummonerDetails = () => {
       if (resp) {
         setData(resp);
         setLoading(false);
+        fetchRank(resp.id)
+        return true
       }
+
     };
+    const fetchRank = async (id?: string) => {
+      const resp = await getSummonerRanked(id)
+      if(resp) {
+        setRanked(resp)
+        setLoading(false)
+        return true
+      }
+    }
+
     if (summonerName) {
-      fetchData();
+      fetchData()
     }
   }, [router]);
-  /*
-    useEffect(() => {
-        const runData = async() => {
-            setData(await dataAPI)
-            setLoading(false);
-        } 
-        runData()
-        if (data!= "ERROR") {
-            const runRanked = async()=> {
-                const jsonData = JSON.parse(JSON.stringify(data))
-                const rankedAPI = await callRank(jsonData?.id)
-                //setRanked(rankedAPI)
-            }
-            //runRanked()
-        }
-      }, [data]); */
+
   if (isLoading) {
     return (
       <Container height="100vh">
@@ -59,6 +56,18 @@ const SummonerDetails = () => {
           summonerIcon={icon}
           summonerName={name}
           summonerLvl={lvl}
+          sQueue={ranked[0]?.queueType}
+          sTier={ranked[0]?.tier.toString()}
+          sRank={ranked[0]?.rank.toString()}
+          sLp={ranked[0]?.leaguePoints.toString()}
+          sWin={ranked[0]?.wins.toString()}
+          sLoss={ranked[0]?.losses.toString()}
+          fQueue={ranked[1]?.queueType}
+          fTier={ranked[1]?.tier.toString()}
+          fRank={ranked[1]?.rank.toString()}
+          fLp={ranked[1]?.leaguePoints.toString()}
+          fWin={ranked[1]?.wins.toString()}
+          fLoss={ranked[1]?.losses.toString()}
         />
       </Main>
     </Container>
