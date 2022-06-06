@@ -1,5 +1,5 @@
 import axios from "axios";
-import { summonerDataQuery, summonerRankedQuery } from "./apiUtils";
+import { summonerDataQuery, summonerMatchlistQuery, summonerRankedQuery } from "./apiUtils";
 
 export const getSummonerData = async (username: string): Promise<any> => {
   const url = summonerDataQuery(username);
@@ -35,3 +35,21 @@ export const getSummonerRanked = async (id: string): Promise<any> => {
     return null
   }
 };
+export const getSummonerMatchList = async (puuid:string): Promise<any> => {
+  const url = summonerMatchlistQuery(puuid)
+  try {
+    let resp = await axios.get(url, {
+      params: {
+        api_key: process.env.NEXT_PUBLIC_API_KEY,
+      }
+    });
+    if (resp.status === 200 && resp.data) {
+      return resp.data
+    }
+    return null
+  } catch(e) {
+    console.log('Error fetching summoner matchlist')
+    return null
+  }
+  
+}

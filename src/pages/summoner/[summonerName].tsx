@@ -4,12 +4,15 @@ import { Main } from "../../components/Main";
 import { SummonerCard } from "../../components/SummonerCard";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { getSummonerData, getSummonerRanked } from "../../apiUtils";
+import { getSummonerData, getSummonerMatchList, getSummonerRanked } from "../../apiUtils";
+import { StatCs } from "../../components/StatCs";
+import { summonerMatch } from "../../apiUtils/summonerMatch";
 
 const SummonerDetails = () => {
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState(undefined);
   const [ranked, setRanked] = useState([]);
+  const [matchData, setMatchData] = useState([])
   const router = useRouter();
 
   useEffect(() => {
@@ -20,6 +23,9 @@ const SummonerDetails = () => {
         setData(resp);
         setLoading(false);
         fetchRank(resp.id)
+        console.log("RESPONSE: ", resp)
+        fetchMatchList(resp.puuid)
+        console.log("MATCH DATA: ", matchData)
         return true
       }
 
@@ -31,6 +37,14 @@ const SummonerDetails = () => {
         setLoading(false)
         return true
       }
+    }
+    const fetchMatchList =async (puuid?: string) => {
+      const resp = await getSummonerMatchList(puuid)
+      if(resp) {
+        const newResp  = summonerMatch(JSON.stringify(resp));
+        setMatchData(await newResp)
+      }
+      
     }
 
     if (summonerName) {
@@ -58,17 +72,17 @@ const SummonerDetails = () => {
           summonerName={name}
           summonerLvl={lvl}
           sQueue={ranked[0]?.queueType}
-          sTier={ranked[0]?.tier.toString()}
-          sRank={ranked[0]?.rank.toString()}
-          sLp={ranked[0]?.leaguePoints.toString()}
-          sWin={ranked[0]?.wins.toString()}
-          sLoss={ranked[0]?.losses.toString()}
+          sTier={ranked[0]?.tier}
+          sRank={ranked[0]?.rank}
+          sLp={ranked[0]?.leaguePoints}
+          sWin={ranked[0]?.wins}
+          sLoss={ranked[0]?.losses}
           fQueue={ranked[1]?.queueType}
-          fTier={ranked[1]?.tier.toString()}
-          fRank={ranked[1]?.rank.toString()}
-          fLp={ranked[1]?.leaguePoints.toString()}
-          fWin={ranked[1]?.wins.toString()}
-          fLoss={ranked[1]?.losses.toString()}
+          fTier={ranked[1]?.tier}
+          fRank={ranked[1]?.rank}
+          fLp={ranked[1]?.leaguePoints}
+          fWin={ranked[1]?.wins}
+          fLoss={ranked[1]?.losses}
         />
         <Stack 
           maxW={"20vw"}
@@ -79,13 +93,23 @@ const SummonerDetails = () => {
             marginLeft={10}
             maxW={"65vw"}
             w={"70vw"}
-            maxH={"100%"}
-            h={"100%"}
+            maxH={"80vh"}
+            h={"100vh"}
             bg={useColorModeValue("white", "gray.800")}
             boxShadow={"2xl"}
             rounded={"lg"}
             overflow={"hidden"}
           >
+            <Stack
+              maxW={"25vw"}
+              w={"70vw"}
+              maxH={"100%"}
+              h={"60%"}
+              ml={10}
+            >
+              <StatCs 
+              sLp={ranked[0]?.leaguePoints.toString()}/>
+            </Stack>
         </Box>
         </Stack>
         </HStack>

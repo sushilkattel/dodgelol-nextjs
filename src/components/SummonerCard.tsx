@@ -44,16 +44,16 @@ export const SummonerCard = (props: SummonerDetails) => {
   rank["RANKED_FLEX_SR"] = "Ranked Flex"
   rank["RANKED_SOLO_5x5"] = "Ranked Solo"
   rank["Unranked"] = "https://drive.google.com/uc?&id=1Dt7dZEeAEpstrqkCiBd3_kg3L9eJAdA7";
+  rank[""] = "https://drive.google.com/uc?&id=1Dt7dZEeAEpstrqkCiBd3_kg3L9eJAdA7";
   const [sQueue, setsQueue] = useState(props.sQueue);
   const [fQueue, setfQueue] = useState(props.fQueue);
   const sWinrate = Math.round((parseInt(props.sWin) / (parseInt(props.sWin)+ parseInt(props.sLoss))) * 100)
   const fWinrate = Math.round((parseInt(props.fWin) / (parseInt(props.fWin)+ parseInt(props.fLoss))) * 100)
-  console.log("Rank: ", props.sRank)
+  
   useEffect(() => {
     if(props.sQueue == undefined) {
       setsQueue("Ranked Solo")
       setfQueue("Ranked Flex")
-      console.log("1")
     }
     else if(props.sQueue == "RANKED_SOLO_5x5") {
       setsQueue("Ranked Solo")
