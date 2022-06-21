@@ -2,9 +2,10 @@ import axios from "axios";
 import { summonerGameQuery } from "./apiUtils";
 
 //handles game data so it only returns whatever data is needed
-export const summonerMatch = async (matchlist?: String): Promise<any> => {
+export const summonerMatch = async (matchlist?: Array<string>): Promise<any> => {
     //gets game data
     const gameQuery = async (gameId?: string): Promise<any> => {
+        console.log("GAME ID: ", gameId)
         const url = summonerGameQuery(gameId);
         try {
             let resp = await axios.get(url, {
@@ -22,20 +23,21 @@ export const summonerMatch = async (matchlist?: String): Promise<any> => {
         }   
     }
     const getAllGameData = (): any => {
-        const matchListArray = matchlist.split(',');
+        matchlist
+        const matchListArray = matchlist;
         Promise.all(matchListArray.map(async (gameId) => {
             const response = await gameQuery(gameId);
-            const data = response.json();
+            const data = response
             return data;
         })).then((values) => {
             console.warn('values: ', JSON.stringify(values));
             return values
             })
-    getAllGameData();
     /*
     const gameHandler =async () => {
         
         
     } */
     }
+    getAllGameData();
 };

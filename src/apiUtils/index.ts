@@ -4,11 +4,7 @@ import { summonerDataQuery, summonerMatchlistQuery, summonerRankedQuery } from "
 export const getSummonerData = async (username: string): Promise<any> => {
   const url = summonerDataQuery(username);
   try {
-    let resp = await axios.get(url, {
-      params: {
-        api_key: process.env.NEXT_PUBLIC_API_KEY,
-      },
-    });
+    let resp = await axios.get(url);
     if (resp.status === 200 && resp.data) {
       return resp.data;
     }

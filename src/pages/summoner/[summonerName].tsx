@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { getSummonerData, getSummonerMatchList, getSummonerRanked } from "../../apiUtils";
 import { StatCs } from "../../components/StatCs";
 import { summonerMatch } from "../../apiUtils/summonerMatch";
+import axios from "axios";
 
 const SummonerDetails = () => {
   const [isLoading, setLoading] = useState(true);
@@ -41,7 +42,8 @@ const SummonerDetails = () => {
     const fetchMatchList =async (puuid?: string) => {
       const resp = await getSummonerMatchList(puuid)
       if(resp) {
-        const newResp  = summonerMatch(JSON.stringify(resp));
+        console.log(resp)
+        const newResp  = summonerMatch(resp);
         setMatchData(await newResp)
       }
       
