@@ -6,11 +6,11 @@ export const Hero = ({ title }: { title: string }) => (
     alignItems="center"
     height="16vh"
     paddingTop={"2vh"}
-    paddingBottom={"2vh"}
+    paddingBottom={"4vh"}
     bgGradient="linear(to-l, heroGradientStart, heroGradientEnd)"
     bgClip="text"
   >
-    <Heading fontSize="6vw">{title}</Heading>
+    <Heading fontSize="7vw">{title}</Heading>
   </Flex>
 );
 

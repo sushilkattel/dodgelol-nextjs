@@ -17,7 +17,7 @@ To deploy this project run
 
 ```bash
   npm i
-  npm 
+  npm run
 ```
 
 
