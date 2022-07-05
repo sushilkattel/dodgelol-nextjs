@@ -17,7 +17,7 @@ const Index = () => {
   };
 
   return (
-    <Container height="100vh">
+    <Container height="100%">
       <Main>
         <Image
           src="/logo.png"

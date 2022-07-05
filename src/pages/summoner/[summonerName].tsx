@@ -1,4 +1,4 @@
-import { Text, Image, HStack, Box, useColorModeValue, Stack} from "@chakra-ui/react";
+import { Text, Image, HStack, Box, useColorModeValue, Stack, Divider, Flex, VStack} from "@chakra-ui/react";
 import { Container } from "../../components/Container";
 import { Main } from "../../components/Main";
 import { SummonerCard } from "../../components/SummonerCard";
@@ -8,6 +8,7 @@ import { getSummonerData, getSummonerMatchList, getSummonerRanked } from "../../
 import { StatCs } from "../../components/StatCs";
 import { summonerMatch } from "../../apiUtils/summonerMatch";
 import axios from "axios";
+import { MatchCard } from "../../components/MatchCard";
 
 const SummonerDetails = () => {
   const [isLoading, setLoading] = useState(true);
@@ -67,7 +68,10 @@ const SummonerDetails = () => {
   const lvl = data?.summonerLevel?.toString();
   return (
     <Container height="100vh">
-      <Main alignSelf={'baseline'} marginLeft={'2em'}>
+      <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+      </style>
+      <Main alignSelf={'baseline'} marginLeft={'2em'} pt={'8em'}>
         <HStack>
         <SummonerCard
           summonerIcon={icon}
@@ -88,6 +92,7 @@ const SummonerDetails = () => {
         />
         <Stack 
           maxW={"20vw"}
+          mt={'10'}
           w={"70vw"}
           maxH={"100%"}
           h={"100%"}>
@@ -96,7 +101,7 @@ const SummonerDetails = () => {
             maxW={"65vw"}
             w={"70vw"}
             maxH={"80vh"}
-            h={"100vh"}
+            h={"78vh"}
             bg={useColorModeValue("white", "gray.800")}
             boxShadow={"2xl"}
             rounded={"lg"}
@@ -112,6 +117,22 @@ const SummonerDetails = () => {
               <StatCs 
               sLp={ranked[0]?.leaguePoints.toString()}/>
             </Stack>
+            <Divider alignSelf={'center'} mt={'-10'}/>
+              <Stack w={'auto'} height={'auto'}>
+              <HStack>
+                  <Text fontFamily={'Bebas Neue'} fontSize={48} color={'#15172A'}>MATCH <br />History</Text>
+                <Flex>
+                  <MatchCard 
+                    champion="null"
+                    kills={5}
+                    deaths={5}
+                    assists={5}
+                    cs={100}
+                    time={60}
+                    status="win" />
+                  </Flex>
+              </HStack>
+              </Stack>
         </Box>
         </Stack>
         </HStack>
