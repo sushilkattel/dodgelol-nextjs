@@ -1,4 +1,4 @@
-import { Text, Image, HStack, VStack, Flex, Divider } from "@chakra-ui/react";
+import { Text, Image, HStack, VStack, Flex, Divider, Stack, Link } from "@chakra-ui/react";
 import { Hero } from "../components/Hero";
 import { Container } from "../components/Container";
 import { Main } from "../components/Main";
@@ -6,7 +6,6 @@ import { Footer } from "../components/Footer";
 import { Search } from "../components/Search";
 import { ArrowBtn } from "../components/ArrowBtn";
 import { useState } from "react";
-import Link from "next/link";
 import { useRouter } from "next/router";
 
 const Index = () => {
@@ -18,7 +17,11 @@ const Index = () => {
 
   return (
     <Container height="100%">
+      <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+      </style>
       <Main>
+        <HStack>
         <Image
           src="/logo.png"
           alt="logo"
@@ -27,6 +30,10 @@ const Index = () => {
           marginLeft={'1vw'}
           draggable={'false'}
         />
+        <Flex alignSelf={'flex-end'} width={'100%'} align={'end'}>
+          <Link fontFamily={'Bebas Neue'} fontSize={32} color={'white'} textAlign={'center'}>Valorant</Link>
+        </Flex>
+        </HStack>
         <HStack>
           <Image
             src="/yasuo.png"
