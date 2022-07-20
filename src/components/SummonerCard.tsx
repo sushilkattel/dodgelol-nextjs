@@ -102,7 +102,7 @@ export const SummonerCard = (props: SummonerDetails) => {
           <Text color={"gray.500"} fontSize={"2xl"}>lvl {props.summonerLvl}</Text>
         </Stack>
         <HStack>
-        <Stack spacing={0} align={"center"} mb={-5} ml={'4vw'}>
+        <Stack spacing={0} align={"center"} mb={-5} ml={'2vw'}>
           <Text fontFamily={"body"} fontSize={'2xl'} fontWeight={400}>{sQueue}</Text>
           <Stack alignSelf={'baseline'} alignItems={'center'}>
             <Image 

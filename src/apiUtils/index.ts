@@ -1,5 +1,5 @@
 import axios from "axios";
-import { summonerDataQuery, summonerMatchlistQuery, summonerRankedQuery } from "./apiUtils";
+import { summonerDataQuery, summonerMatchlistQuery, summonerRankedQuery} from "./apiUtils";
 
 export const getSummonerData = async (username: string): Promise<any> => {
   const url = summonerDataQuery(username);
@@ -48,4 +48,17 @@ export const getSummonerMatchList = async (puuid:string): Promise<any> => {
     return null
   }
   
+}
+export const getValorantLeaderboard = async (): Promise<any> => {
+  const url = `http://localhost:3080/valorantLeaderboard?`
+  try {
+    let resp = await axios.get(url);
+    if (resp.status === 200 && resp.data) {
+      return resp.data;
+    }
+    return null;
+  } catch (err) {
+    console.error(`Error fetching summoner data: ${err}`);
+    return null;
+  }
 }

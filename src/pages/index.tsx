@@ -31,7 +31,7 @@ const Index = () => {
           draggable={'false'}
         />
         <Flex alignSelf={'flex-end'} width={'100%'} align={'end'}>
-          <Link fontFamily={'Bebas Neue'} fontSize={32} color={'white'} textAlign={'center'}>Valorant</Link>
+          {/*<Link fontFamily={'Bebas Neue'} fontSize={32} color={'white'} textAlign={'center'}>Valorant</Link>*/}
         </Flex>
         </HStack>
         <HStack>

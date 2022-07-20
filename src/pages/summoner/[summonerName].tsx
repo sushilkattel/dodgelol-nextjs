@@ -23,10 +23,9 @@ const SummonerDetails = () => {
       const resp = await getSummonerData(summonerName);
       if (resp) {
         setData(resp);
-        setLoading(false);
-        fetchRank(resp.id)
+        await fetchRank(resp.id)
         console.log("RESPONSE: ", resp)
-        fetchMatchList(resp.puuid)
+        await fetchMatchList(resp.puuid)
         console.log("MATCH DATA: ", matchData)
         return true
       }
@@ -36,18 +35,24 @@ const SummonerDetails = () => {
       const resp = await getSummonerRanked(id)
       if(resp) {
         setRanked(resp)
-        setLoading(false)
         return true
       }
     }
-    const fetchMatchList =async (puuid?: string) => {
+    const fetchMatchList = async (puuid?: string) => {
       const resp = await getSummonerMatchList(puuid)
       if(resp) {
-        console.log(resp)
-        const newResp  = summonerMatch(resp);
-        setMatchData(await newResp)
+        console.log("MATCHLIST: ", resp);
+        await updateGameData(resp, puuid)
+        return true
       }
       
+    }
+    const updateGameData = async (data?: any, puuid?: string) => {
+      const summData = await summonerMatch(data, puuid);
+      console.log("TEST DATA: ", summData)
+      setLoading(false)
+      setMatchData(summData)
+      //await summonerMatch(data, puuid).then((value) => console.log("TEST VALUE PLS WORK: ", value))
     }
 
     if (summonerName) {
@@ -67,7 +72,7 @@ const SummonerDetails = () => {
   const name = data?.name?.toString();
   const lvl = data?.summonerLevel?.toString();
   return (
-    <Container height="100vh">
+    <Container height="100%">
       <style>
         @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
       </style>
@@ -122,14 +127,38 @@ const SummonerDetails = () => {
               <HStack>
                   <Text fontFamily={'Bebas Neue'} fontSize={48} color={'#15172A'}>MATCH <br />History</Text>
                 <Flex>
+                <Box
+                  maxW={"max-content"}
+                  w={"max-content"}
+                  maxH={"max-content"}
+                  h={"max-content"}
+                  bg={'white'}
+                  rounded={"3xl"}
+                  overflow={"hidden"}
+                  overflowY={'auto'}
+                  alignSelf={'center'}
+                  alignContent={'center'}
+                  alignItems={'center'}
+                >
+                  {/*matchData.map(game => (
                   <MatchCard 
-                    champion="null"
+                    champion={game[0]} 
+                    kills={game[2]} 
+                    deaths={game[3]} 
+                    assists={game[4]} 
+                    cs={game[5]} 
+                    time={game[6]} 
+                    status={game[8]} 
+                  />)) */}
+                  <MatchCard 
+                    champion="Yasuo"
                     kills={5}
                     deaths={5}
                     assists={5}
                     cs={100}
                     time={60}
-                    status="win" />
+                    status={true} />
+                    </Box>
                   </Flex>
               </HStack>
               </Stack>
