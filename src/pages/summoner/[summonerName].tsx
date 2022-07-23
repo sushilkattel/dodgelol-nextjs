@@ -6,9 +6,10 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { getSummonerData, getSummonerMatchList, getSummonerRanked } from "../../apiUtils";
 import { StatCs } from "../../components/StatCs";
-import { summonerMatch } from "../../apiUtils/summonerMatch";
+import { previewGameData, summonerMatch } from "../../apiUtils/summonerMatch";
 import axios from "axios";
 import { MatchCard } from "../../components/MatchCard";
+import { match } from "assert";
 
 const SummonerDetails = () => {
   const [isLoading, setLoading] = useState(true);
@@ -16,7 +17,12 @@ const SummonerDetails = () => {
   const [ranked, setRanked] = useState([]);
   const [matchData, setMatchData] = useState([])
   const router = useRouter();
-
+  //const jsonData = JSON.parse(data)
+  const icon = data?.profileIconId?.toString();
+  const name = data?.name?.toString();
+  const lvl = data?.summonerLevel?.toString();
+  const bgColor = useColorModeValue("white", "gray.800");
+  
   useEffect(() => {
     const summonerName = router.query?.summonerName?.toString() || "";
     const fetchData = async () => {
@@ -49,9 +55,10 @@ const SummonerDetails = () => {
     }
     const updateGameData = async (data?: any, puuid?: string) => {
       const summData = await summonerMatch(data, puuid);
-      console.log("TEST DATA: ", summData)
+      //const summPreview = await previewGameData(summData, puuid)
       setLoading(false)
       setMatchData(summData)
+      console.log("testData: ", matchData)
       //await summonerMatch(data, puuid).then((value) => console.log("TEST VALUE PLS WORK: ", value))
     }
 
@@ -67,12 +74,9 @@ const SummonerDetails = () => {
       </Container>
     );
   }
-  //const jsonData = JSON.parse(data)
-  const icon = data?.profileIconId?.toString();
-  const name = data?.name?.toString();
-  const lvl = data?.summonerLevel?.toString();
+
   return (
-    <Container height="100%">
+    <Container height="100vh">
       <style>
         @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
       </style>
@@ -107,10 +111,11 @@ const SummonerDetails = () => {
             w={"70vw"}
             maxH={"80vh"}
             h={"78vh"}
-            bg={useColorModeValue("white", "gray.800")}
+            bg={bgColor}
             boxShadow={"2xl"}
             rounded={"lg"}
             overflow={"hidden"}
+            overflowY={'auto'}
           >
             <Stack
               maxW={"25vw"}
@@ -124,9 +129,9 @@ const SummonerDetails = () => {
             </Stack>
             <Divider alignSelf={'center'} mt={'-10'}/>
               <Stack w={'auto'} height={'auto'}>
+              <Text fontFamily={'Bebas Neue'} fontSize={48} color={'#15172A'}>MATCH <br />History</Text>
               <HStack>
-                  <Text fontFamily={'Bebas Neue'} fontSize={48} color={'#15172A'}>MATCH <br />History</Text>
-                <Flex>
+                <Flex ml={'14%'} mt={'-15%'}>
                 <Box
                   maxW={"max-content"}
                   w={"max-content"}
@@ -149,15 +154,39 @@ const SummonerDetails = () => {
                     cs={game[5]} 
                     time={game[6]} 
                     status={game[8]} 
-                  />)) */}
-                  <MatchCard 
-                    champion="Yasuo"
-                    kills={5}
-                    deaths={5}
-                    assists={5}
-                    cs={100}
-                    time={60}
-                    status={true} />
+                  />)) 
+                  //Data: [ChampName, ChampLvl, kills, deaths, assists, cs, timePlayed, lane, winBoolean]
+                  */}
+                  <HStack>
+                    <VStack>
+                    {matchData.splice(0, Math.ceil(matchData.length / 2)).map(game => (
+                      <MatchCard 
+                        champion={game[0]}
+                        lvl={game[1]}
+                        kills={game[2]}
+                        deaths={game[3]}
+                        assists={game[4]}
+                        cs={game[5]}
+                        time={game[6]}
+                        lane={game[7]}
+                        status={game[8]} />
+                      ))}
+                      </VStack>
+                      <VStack>
+                      {matchData.map(game => (
+                      <MatchCard 
+                        champion={game[0]}
+                        lvl={game[1]}
+                        kills={game[2]}
+                        deaths={game[3]}
+                        assists={game[4]}
+                        cs={game[5]}
+                        time={game[6]}
+                        lane={game[7]}
+                        status={game[8]} />
+                      ))}
+                      </VStack>
+                    </HStack>
                     </Box>
                   </Flex>
               </HStack>

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { summonerDataQuery, summonerMatchlistQuery, summonerRankedQuery} from "./apiUtils";
+import { summonerDataQuery, summonerMatchlistQuery, summonerRankedQuery, summonerGameQuery} from "./apiUtils";
 
 export const getSummonerData = async (username: string): Promise<any> => {
   const url = summonerDataQuery(username);
@@ -49,6 +49,30 @@ export const getSummonerMatchList = async (puuid:string): Promise<any> => {
   }
   
 }
+export const getGameData = async (gameId?: string): Promise<any> => {
+  console.log("GAME ID: ", gameId)
+  const url = summonerGameQuery(gameId);
+  try {
+      let resp = await axios.get(url, {
+      params: {
+          api_key: process.env.NEXT_PUBLIC_API_KEY,
+      },
+      });
+      if (resp.status === 200 && resp.data) {
+      return resp.data;
+      }
+      return null;
+  } catch (err) {
+      console.error(`Error fetching summoner game data: ${err}`);
+      return null;
+  }   
+}
+//Gets index of where the user is
+export const getIndex = (matchData?: any, puuid?: any): any => {
+  return matchData?.metadata?.participants?.findIndex(obj => obj === puuid);
+}
+
+//valorant test
 export const getValorantLeaderboard = async (): Promise<any> => {
   const url = `http://localhost:3080/valorantLeaderboard?`
   try {

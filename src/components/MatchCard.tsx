@@ -8,10 +8,28 @@ interface MatchDetails {
     cs: any;
     time: any;
     status: boolean;
+    lvl: any;
+    lane: string;
 }
 
-export const MatchCard = (props: MatchDetails) => (
-    <Flex>
+export const MatchCard = (props: MatchDetails) => {
+    const getKDA = () => {
+        const kill = parseInt(props.kills)
+        const death = parseInt(props.deaths)
+        const assist = parseInt(props.assists)
+        if(death == 0) {
+            return kill + assist
+        }
+        const sum = kill + assist
+        return parseFloat((sum / death).toFixed(2))
+    }
+    const getCs = () => {
+        const time = parseFloat(props.time)
+        const cs = parseInt(props.cs)
+        return (cs / time).toFixed(1)
+    }
+    return(
+    <Flex p={'1vh'}>
         <style>
             @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
         </style>
@@ -26,27 +44,27 @@ export const MatchCard = (props: MatchDetails) => (
         >
             <HStack>
                 <Image
-                    src={`https://ddragon.leagueoflegends.com/cdn/11.12.1/img/champion/Yasuo.png`}
+                    src={`https://ddragon.leagueoflegends.com/cdn/12.13.1/img/champion/${props.champion}.png`}
                     style={{width: '2.5vw', alignSelf: 'flex-start', borderRadius: 25}}
                     mt='1.5vh'
                     ml='0.5vw'
                 />
                 <VStack>
-                    <Text fontFamily={'Bebas Neue'} alignSelf='flex-start' mt={'1vh'} mb={'-2vh'} fontSize={20}>Yasuo</Text>
-                    <Text fontFamily={'Bebas Neue'} alignSelf='flex-start' mt={'-2vh'} fontSize={14}>lvl16</Text>
+                    <Text fontFamily={'Bebas Neue'} alignSelf='flex-start' mt={'1vh'} mb={'-2vh'} fontSize={20}>{props.champion}</Text>
+                    <Text fontFamily={'Bebas Neue'} alignSelf='flex-start' mt={'-2vh'} fontSize={14}>lvl{props.lvl}</Text>
                 </VStack>
                 <VStack>
-                    <Text fontFamily={'Bebas Neue'} alignSelf='flex-start' mt={'1vh'} mb={'-2vh'} fontSize={20}>10/10/10</Text>
-                    <Text fontFamily={'Bebas Neue'} alignSelf='flex-start' mt={'-2vh'} fontSize={14}>2.00 KDA</Text>
+                    <Text fontFamily={'Bebas Neue'} alignSelf='flex-start' mt={'1vh'} mb={'-2vh'} fontSize={20}>{props.kills}/{props.deaths}/{props.assists}</Text>
+                    <Text fontFamily={'Bebas Neue'} alignSelf='flex-start' mt={'-2vh'} fontSize={14}>{getKDA()} KDA</Text>
                 </VStack>
                 <VStack>
-                    <Text fontFamily={'Bebas Neue'} alignSelf='flex-start' mt={'1vh'} mb={'-2vh'} fontSize={20}>70 CS</Text>
-                    <Text fontFamily={'Bebas Neue'} alignSelf='flex-start' mt={'-2vh'} fontSize={14}>(5)</Text>
+                    <Text fontFamily={'Bebas Neue'} alignSelf='flex-start' mt={'1vh'} mb={'-2vh'} fontSize={20}>{props.cs} CS</Text>
+                    <Text fontFamily={'Bebas Neue'} alignSelf='flex-start' mt={'-2vh'} fontSize={14}>({getCs()})</Text>
                 </VStack>
             </HStack>
         </Box>
     </Flex>
-);
+);}
 MatchCard.defaultProps = {
     champion: "NA",
     kills: 0,
