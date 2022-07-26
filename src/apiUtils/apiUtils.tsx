@@ -2,7 +2,7 @@ export const summonerDataQuery = (summonerName?: string): string => {
   return `http://localhost:3080/summonerDataQuery?user=${summonerName}`;
 };
 export const summonerRankedQuery = (id?: string): string => {
-  return `https://na1.api.riotgames.com/lol/league/v4/entries/by-summoner/${id}`
+  return `http://localhost:3080/summonerRankedQuery?user=${id}`
 }
 export const summonerGameQuery = (gameId?: string): string => {
   return `http://localhost:3080/summonerGameQuery?user=${gameId}`
