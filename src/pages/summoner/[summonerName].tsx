@@ -6,16 +6,18 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { getSummonerData, getSummonerMatchList, getSummonerRanked } from "../../apiUtils";
 import { StatCs } from "../../components/StatCs";
-import { previewGameData, summonerMatch } from "../../apiUtils/summonerMatch";
+import { previewGameData, rolesMatchData, summonerMatch } from "../../apiUtils/summonerMatch";
 import axios from "axios";
 import { MatchCard } from "../../components/MatchCard";
 import { match } from "assert";
+import { StatRoles } from "../../components/StatRoles";
 
 const SummonerDetails = () => {
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState(undefined);
   const [ranked, setRanked] = useState([]);
   const [matchData, setMatchData] = useState([])
+  const [roleData, setRoleData] = useState([])
   const router = useRouter();
   //const jsonData = JSON.parse(data)
   const icon = data?.profileIconId?.toString();
@@ -55,9 +57,11 @@ const SummonerDetails = () => {
     }
     const updateGameData = async (data?: any, puuid?: string) => {
       const summData = await summonerMatch(data, puuid);
-      //const summPreview = await previewGameData(summData, puuid)
+      const summPreview = await previewGameData(summData, puuid)
+      const roles = await rolesMatchData(summData, puuid)
+      setMatchData(summPreview)
+      setRoleData(roles)
       setLoading(false)
-      setMatchData(summData)
       console.log("testData: ", matchData)
       //await summonerMatch(data, puuid).then((value) => console.log("TEST VALUE PLS WORK: ", value))
     }
@@ -100,7 +104,7 @@ const SummonerDetails = () => {
           fLoss={ranked[1]?.losses}
         />
         <Stack 
-          maxW={"20vw"}
+          maxW={"100vw"}
           mt={'10'}
           w={"70vw"}
           maxH={"100%"}
@@ -117,16 +121,25 @@ const SummonerDetails = () => {
             overflow={"hidden"}
             overflowY={'auto'}
           >
+            <HStack w={'80vw'} h={'60%'} ml={10}>
             <Stack
-              maxW={"25vw"}
-              w={"70vw"}
-              maxH={"100%"}
-              h={"60%"}
-              ml={10}
+              maxW={"50%"}
+              w={"100%"}
+              maxH={"50%"}
+              h={"100%"}
             >
               <StatCs 
               sLp={ranked[0]?.leaguePoints.toString()}/>
             </Stack>
+            <Stack
+              maxW={"50%"}
+              w={"100%"}
+              maxH={"50%"}
+              h={"100%"}>
+
+            </Stack>
+            </HStack>
+           
             <Divider alignSelf={'center'} mt={'-10'}/>
               <Stack w={'auto'} height={'auto'}>
               <Text fontFamily={'Bebas Neue'} fontSize={48} color={'#15172A'}>MATCH <br />History</Text>
