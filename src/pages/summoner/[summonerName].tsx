@@ -84,12 +84,6 @@ const SummonerDetails = () => {
       <style>
         @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
       </style>
-      <head>
-        <meta 
-          http-equiv="Content-Security-Policy"   
-          content="upgrade-insecure-requests" 
-          />
-      </head>
       <Main alignSelf={'baseline'} marginLeft={'2em'} pt={'8em'}>
         <Stack direction={['column','row']}>
         <SummonerCard
