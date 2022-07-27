@@ -16,7 +16,7 @@ This project is used by the following repos:
 To deploy this project run
 
 ```bash
-  npm i
+  npm i -f
   npm run
 ```
 
