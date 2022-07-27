@@ -81,7 +81,7 @@ export const SummonerCard = (props: SummonerDetails) => {
       <Image
         h={"20vh"}
         w={"full"}
-        src={"https://drive.google.com/uc?id=1s1BAPAbFmroGPoUVCnZnhHIhTnM6GZkn"}
+        src={"https://dodgelol.gg/api/images/bg.png"}
         objectFit={"cover"}
       />
       <Flex justify={"center"} mt={-20}>

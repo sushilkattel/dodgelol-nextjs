@@ -24,15 +24,15 @@ export const StatCs = (props: SummonerData) => {
       }];
       console.log(percentage)
       return (
-          <Stack w={"100%"} h={"100%"} marginLeft={"-2em"}>
-              <Text marginLeft={"8em"}>League Points</Text>
+          <Stack w={"100%"} h={"100%"} ml={["20%","-30%"]} mt={'-2vh'}>
+              <Text marginLeft={["1em","15em"]}>League Points</Text>
             <ResponsiveRadialBar
               data={data}
               endAngle={360}
               colors={{ scheme: 'pastel1' }}
-              margin={{ top: 25, right: 10, bottom: 25, left: 10 }}
+              margin={{ top: 25, right: 0, bottom: 25, left: 0 }}
             />
-            <Text paddingLeft={"9em"}>{parseInt(props.sLp)}/100 LP</Text>
+            <Text paddingLeft={["2em","15em"]}>{parseInt(props.sLp)}/100 LP</Text>
             </Stack>
       )
 }

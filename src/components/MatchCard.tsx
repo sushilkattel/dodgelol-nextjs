@@ -29,39 +29,41 @@ export const MatchCard = (props: MatchDetails) => {
         return (cs / time).toFixed(1)
     }
     return(
-    <Flex p={'1vh'}>
+    <Flex p={['1vh','1vh']}>
         <style>
             @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
         </style>
         <Box
-          maxW={"25vw"}
-          w={"25vw"}
-          maxH={"25vh"}
-          h={"10vh"}
+          maxW={["50vw","25vw"]}
+          w={["50vw","25vw"]}
+          maxH={["max-content","25vh"]}
+          h={["max-content","10vh"]}
           bg={'#FFF4FE'}
           rounded={"3xl"}
           overflow={"hidden"}
         >
-            <HStack>
+            <Stack direction={['column', 'row']}>
                 <Image
                     src={`https://ddragon.leagueoflegends.com/cdn/12.13.1/img/champion/${props.champion}.png`}
-                    style={{width: '2.5vw', alignSelf: 'flex-start', borderRadius: 25}}
-                    mt='1.5vh'
-                    ml='0.5vw'
+                    style={{borderRadius: 25}}
+                    alignSelf={['center','flex-start']}
+                    width={['15vw','2.5vw']}
+                    mt={'1.5vh'}
+                    ml={'0.5vw'}
                 />
                 <VStack>
-                    <Text fontFamily={'Bebas Neue'} alignSelf='flex-start' mt={'1vh'} mb={'-2vh'} fontSize={20}>{props.champion}</Text>
-                    <Text fontFamily={'Bebas Neue'} alignSelf='flex-start' mt={'-2vh'} fontSize={14}>lvl{props.lvl}</Text>
+                    <Text fontFamily={'Bebas Neue'} alignSelf={['center','flex-start']} mt={'1vh'} mb={'-2vh'} fontSize={[30,20]}>{props.champion}</Text>
+                    <Text fontFamily={'Bebas Neue'} alignSelf={['center','flex-start']} mt={'-2vh'} fontSize={14}>lvl{props.lvl}</Text>
                 </VStack>
                 <VStack>
-                    <Text fontFamily={'Bebas Neue'} alignSelf='flex-start' mt={'1vh'} mb={'-2vh'} fontSize={20}>{props.kills}/{props.deaths}/{props.assists}</Text>
-                    <Text fontFamily={'Bebas Neue'} alignSelf='flex-start' mt={'-2vh'} fontSize={14}>{getKDA()} KDA</Text>
+                    <Text fontFamily={'Bebas Neue'} alignSelf={['center','flex-start']} mt={['0','1vh']} mb={'-2vh'} fontSize={[25,20]}>{props.kills}/{props.deaths}/{props.assists}</Text>
+                    <Text fontFamily={'Bebas Neue'} alignSelf={['center','flex-start']} mt={'-2vh'} fontSize={14}>{getKDA()} KDA</Text>
                 </VStack>
                 <VStack>
-                    <Text fontFamily={'Bebas Neue'} alignSelf='flex-start' mt={'1vh'} mb={'-2vh'} fontSize={20}>{props.cs} CS</Text>
-                    <Text fontFamily={'Bebas Neue'} alignSelf='flex-start' mt={'-2vh'} fontSize={14}>({getCs()})</Text>
+                    <Text fontFamily={'Bebas Neue'} alignSelf={['center','flex-start']} mt={['0','1vh']} mb={'-2vh'} fontSize={[25,20]}>{props.cs} CS</Text>
+                    <Text fontFamily={'Bebas Neue'} alignSelf={['center','flex-start']} mt={'-2vh'} fontSize={14}>({getCs()})</Text>
                 </VStack>
-            </HStack>
+            </Stack>
         </Box>
     </Flex>
 );}

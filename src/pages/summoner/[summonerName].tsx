@@ -84,7 +84,7 @@ const SummonerDetails = () => {
       <style>
         @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
       </style>
-      <Main alignSelf={'baseline'} marginLeft={'2em'} pt={'8em'}>
+      <Main alignSelf={'baseline'} marginLeft={'2em'} pt={['2em', "5em"]}>
         <Stack direction={['column','row']}>
         <SummonerCard
           summonerIcon={icon}
@@ -105,14 +105,14 @@ const SummonerDetails = () => {
         />
         <Stack 
           maxW={"100vw"}
-          mt={'10'}
           w={"70vw"}
           maxH={"100%"}
-          h={"100%"}>
+          h={"100%"}
+          pt={['1em', "2em"]}>
           <Box
-            marginLeft={10}
-            maxW={"65vw"}
-            w={"70vw"}
+            marginLeft={[0,10]}
+            maxW={["80vw","65vw"]}
+            w={["80vw","70vw"]}
             maxH={"80vh"}
             h={"78vh"}
             bg={bgColor}
@@ -123,9 +123,9 @@ const SummonerDetails = () => {
           >
             <HStack w={'80vw'} h={'60%'} ml={10}>
             <Stack
-              maxW={"50%"}
+              maxW={"80%"}
               w={"100%"}
-              maxH={"50%"}
+              maxH={"80%"}
               h={"100%"}
             >
               <StatCs 
@@ -142,7 +142,10 @@ const SummonerDetails = () => {
            
             <Divider alignSelf={'center'} mt={'-10'}/>
               <Stack w={'auto'} height={'auto'}>
-              <Text fontFamily={'Bebas Neue'} fontSize={48} color={'#15172A'}>MATCH <br />History</Text>
+                <Stack direction={['row','column']} marginY={["5vh", 0]} marginTop={['1vh', 0]} marginX={['20%','0']}>
+                <Text fontFamily={'Bebas Neue'} fontSize={[36,48]} color={'#15172A'}>MATCH</Text>
+                <Text fontFamily={'Bebas Neue'} fontSize={[36,48]} color={'#15172A'}>History</Text>
+                </Stack>
               <HStack>
                 <Flex ml={'14%'} mt={'-15%'}>
                 <Box
@@ -170,7 +173,7 @@ const SummonerDetails = () => {
                   />)) 
                   //Data: [ChampName, ChampLvl, kills, deaths, assists, cs, timePlayed, lane, winBoolean]
                   */}
-                  <HStack>
+                  <Stack direction={['column','row']}>
                     <VStack>
                     {matchData.splice(0, Math.ceil(matchData.length / 2)).map(game => (
                       <MatchCard 
@@ -199,7 +202,7 @@ const SummonerDetails = () => {
                         status={game[8]} />
                       ))}
                       </VStack>
-                    </HStack>
+                    </Stack>
                     </Box>
                   </Flex>
               </HStack>
