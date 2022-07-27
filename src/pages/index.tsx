@@ -16,7 +16,7 @@ const Index = () => {
   };
 
   return (
-    <Container height="100%">
+    <Container height="100vh" width={"100vw"}>
       <style>
         @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
       </style>
@@ -34,27 +34,27 @@ const Index = () => {
           {/*<Link fontFamily={'Bebas Neue'} fontSize={32} color={'white'} textAlign={'center'}>Valorant</Link>*/}
         </Flex>
         </HStack>
-        <HStack>
+        <Stack width={"100vw"} direction={['column','row']} alignItems={'center'}>
           <Image
             src="/yasuo.png"
             alt="logo"
-            width={"30vw"}
+            width={["50vw","30vw"]}
             marginTop={'8vh'}
             marginLeft={'1vw'}
             draggable={'false'}
             opacity={'40%'}
           />
           <Flex pl={'8vw'}>
-          <VStack>
+          <VStack marginBlock={-10}>
               <HStack>
                 <Hero />
                 <Image 
                   src="/poro.png"
-                  width="6vw"
+                  width={["12vw","6vw"]}
                 />
               </HStack>
               <form onSubmit={handleSubmit}>
-                <Flex pt={'2vh'}>
+                <Flex marginBlock={[-10, 0]}>
                   <HStack style={divStyle}>
                     <Search onChange={(e) => setSummonerName(e.target.value)} />
                     <ArrowBtn type="submit" />
@@ -62,15 +62,13 @@ const Index = () => {
                 </Flex>
               </form>
               <Divider
+                paddingTop={[5, 0]}
                 height={'2vh'}
               />
           </VStack>
           </Flex>
-        </HStack>
+        </Stack>
       </Main>
-      <Footer>
-        <Text>© 2022 DodgeLoL</Text>
-      </Footer>
     </Container>
   );
 };

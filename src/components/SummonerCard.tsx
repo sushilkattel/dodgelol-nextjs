@@ -69,8 +69,8 @@ export const SummonerCard = (props: SummonerDetails) => {
   return (
     <Center py={6}>
     <Box
-      maxW={"25vw"}
-      w={"25vw"}
+      maxW={["80vw","25vw"]}
+      w={["80vw","25vw"]}
       maxH={"100%"}
       h={"auto"}
       bg={useColorModeValue("white", "gray.800")}

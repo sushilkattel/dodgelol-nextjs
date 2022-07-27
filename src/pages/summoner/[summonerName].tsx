@@ -85,7 +85,7 @@ const SummonerDetails = () => {
         @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
       </style>
       <Main alignSelf={'baseline'} marginLeft={'2em'} pt={'8em'}>
-        <HStack>
+        <Stack direction={['column','row']}>
         <SummonerCard
           summonerIcon={icon}
           summonerName={name}
@@ -206,7 +206,7 @@ const SummonerDetails = () => {
               </Stack>
         </Box>
         </Stack>
-        </HStack>
+        </Stack>
       </Main>
     </Container>
   );

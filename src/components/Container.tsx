@@ -1,9 +1,8 @@
-import { Flex, FlexProps } from "@chakra-ui/react";
+import { Flex, FlexProps, Stack, StackProps } from "@chakra-ui/react";
 
-export const Container = (props: FlexProps) => (
-  <Flex
-    direction="column"
-    bgColor="#15172A"
+export const Container = (props: StackProps) => (
+  <Stack
+    //bgColor="#15172A"
     color="black"
     _dark={{
       bg: "gray.900",

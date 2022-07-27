@@ -7,8 +7,9 @@ export const ArrowBtn = (props: ButtonProps) => (
     color={"#15172A"}
     marginLeft={"1vw"}
     borderRadius={10}
-    size={"lg"}
-    height={"8vh"}
+    //size={"lg"}
+    width={["16vw","6vw"]}
+    height={["6vh","8vh"]}
     fontSize={"2xl"}
     {...props}
   >
