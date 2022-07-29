@@ -43,8 +43,8 @@ export const SummonerCard = (props: SummonerDetails) => {
   rank["CHALLENGER"] = "https://lh3.googleusercontent.com/-0Cda9b8O1KtYaSGyKi_uwumt77SrKgEcj5Dys8uu6YOpAwA39sGCP66fE8qw28jAN-DiEzSmIkYDQssdphWTQ0dr8b8lhCnzx0qewQZWphp7EE7HJWgQt_5x3-2RXoLWWStCUsBcg=w2400";
   rank["RANKED_FLEX_SR"] = "Ranked Flex"
   rank["RANKED_SOLO_5x5"] = "Ranked Solo"
-  rank["Unranked"] = "https://drive.google.com/uc?&id=1Dt7dZEeAEpstrqkCiBd3_kg3L9eJAdA7";
-  rank[""] = "https://drive.google.com/uc?&id=1Dt7dZEeAEpstrqkCiBd3_kg3L9eJAdA7";
+  rank["Unranked"] = "https://dodgelol.gg/api/images/unranked.png";
+  rank[""] = "https://dodgelol.gg/api/images/unranked.png";
   const [sQueue, setsQueue] = useState(props.sQueue);
   const [fQueue, setfQueue] = useState(props.fQueue);
   const sWinrate = Math.round((parseInt(props.sWin) / (parseInt(props.sWin)+ parseInt(props.sLoss))) * 100)
