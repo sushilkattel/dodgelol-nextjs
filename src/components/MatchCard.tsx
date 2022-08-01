@@ -28,8 +28,12 @@ export const MatchCard = (props: MatchDetails) => {
         const cs = parseInt(props.cs)
         return (cs / time).toFixed(1)
     }
+    var champion = props.champion;
+    if (champion == "FiddleSticks") {
+        champion = "Fiddlesticks"
+    }
     return(
-    <Flex p={['1vh','1vh']}>
+    <Flex p={['1vh','1vh']} overflowY={'scroll'}>
         <style>
             @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
         </style>
@@ -44,7 +48,7 @@ export const MatchCard = (props: MatchDetails) => {
         >
             <Stack direction={['column', 'row']}>
                 <Image
-                    src={`https://ddragon.leagueoflegends.com/cdn/12.13.1/img/champion/${props.champion}.png`}
+                    src={`https://ddragon.leagueoflegends.com/cdn/12.13.1/img/champion/${champion}.png`}
                     style={{borderRadius: 25}}
                     alignSelf={['center','flex-start']}
                     width={['15vw','2.5vw']}

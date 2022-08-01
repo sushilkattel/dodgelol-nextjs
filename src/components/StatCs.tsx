@@ -1,6 +1,7 @@
 //imports
 import { Stack, Text, Flex, Center, Divider } from '@chakra-ui/react';
 import { ResponsiveRadialBar } from '@nivo/radial-bar';
+import { summonerDataQuery } from '../apiUtils/apiUtils';
 
 interface SummonerData {
     sLp: string;
@@ -35,4 +36,7 @@ export const StatCs = (props: SummonerData) => {
             <Text paddingLeft={["2em","15em"]}>{parseInt(props.sLp)}/100 LP</Text>
             </Stack>
       )
+}
+StatCs.defaultProps = {
+  sLp: "0"
 }

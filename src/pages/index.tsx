@@ -25,9 +25,9 @@ const Index = () => {
         <Image
           src="/logo.png"
           alt="logo"
-          width={"5vw"}
+          width={["10vw","5vw"]}
           marginTop={'8vh'}
-          marginLeft={'1vw'}
+          marginLeft={["3vw",'1vw']}
           draggable={'false'}
         />
         <Flex alignSelf={'flex-end'} width={'100%'} align={'end'}>
@@ -44,7 +44,7 @@ const Index = () => {
             draggable={'false'}
             opacity={'40%'}
           />
-          <Flex pl={'8vw'}>
+          <Flex pl={['4vw','8vw']}>
           <VStack marginBlock={-10}>
               <HStack>
                 <Hero />
@@ -63,18 +63,27 @@ const Index = () => {
               </form>
               <Divider
                 paddingTop={[5, 0]}
-                height={'2vh'}
+                width={['0', '100%']}
+                height={['0vh','2vh']}
               />
           </VStack>
           </Flex>
         </Stack>
+        <footer>
+          <Text fontFamily={'Bebas Neue'} fontSize={24} color={'white'} ml={'2vw'} mt={['60%', '']}>
+            © 2022 DodgeLoL
+          </Text>
+          <Text fontFamily={'Bebas Neue'} fontSize={[10,16]} color={'white'} ml={'2vw'} width={['90%','50%']}>
+          DodgeLoL isn’t endorsed by Riot Games and doesn’t reflect the views or opinions of Riot Games or anyone officially involved in producing or managing League of Legends. League of Legends and Riot Games are trademarks or registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc.‍
+          </Text>
+          </footer>
       </Main>
     </Container>
   );
 };
 
 const divStyle = {
-  paddingTop: "2vh",
+  paddingTop: "4vh",
 };
 
 export default Index;

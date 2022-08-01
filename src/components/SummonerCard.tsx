@@ -31,6 +31,23 @@ interface SummonerDetails {
   fLoss: string;
 }
 export const SummonerCard = (props: SummonerDetails) => {
+  const [sQueue, setsQueue] = useState(props.sQueue);
+  const [fQueue, setfQueue] = useState(props.fQueue);
+  var summonerName = props.summonerName
+  var summonerLvl = props.summonerLvl
+  var summonerIcon = props.summonerIcon
+  var soloQueue = useState(sQueue)
+  var sTier = props.sTier
+  var sRank = props.sRank
+  var sLp = props.sLp
+  var sWin = props.sWin
+  var sLoss = props.sLoss
+  var flexQueue = useState(fQueue)
+  var fTier = props.fTier
+  var fRank = props.fRank
+  var fLp = props.fLp
+  var fWin = props.fWin
+  var fLoss = props.fLoss
   const rank = {}
   rank["IRON"] = "https://lh3.googleusercontent.com/WUWV7aDtQAHnGzAw4XPBe3hrx_vfytHU4SVTZzdS__29Evg33dI25KZJOqgg7OoXV7Ve62m9rkpo-x1rFTo5E8dnEildJ7mp5z8VM7ZCfq2NNT7UvYyhmiZUJFhjsyFgtW2JLJo6Rw=w2400";
   rank["BRONZE"] = "https://lh3.googleusercontent.com/sE3cWKDOIpTF26AfHsi6KRnZn1bkBY0-pXI-3vc-7geQ95W918j6LICKXo-9by4E8va-ZpJ99u2ltMMvEDF32_gno31qJuudePp8CZYkQFlxLi-YFcvG3OjzCKHi3SOfTq-JeVSqZg=w2400";
@@ -45,13 +62,35 @@ export const SummonerCard = (props: SummonerDetails) => {
   rank["RANKED_SOLO_5x5"] = "Ranked Solo"
   rank["Unranked"] = "https://dodgelol.gg/api/images/unranked.png";
   rank[""] = "https://dodgelol.gg/api/images/unranked.png";
-  const [sQueue, setsQueue] = useState(props.sQueue);
-  const [fQueue, setfQueue] = useState(props.fQueue);
-  const sWinrate = Math.round((parseInt(props.sWin) / (parseInt(props.sWin)+ parseInt(props.sLoss))) * 100)
-  const fWinrate = Math.round((parseInt(props.fWin) / (parseInt(props.fWin)+ parseInt(props.fLoss))) * 100)
+  var sWinrate = Math.round((parseInt(props.sWin) / (parseInt(props.sWin)+ parseInt(props.sLoss))) * 100)
+  var fWinrate = Math.round((parseInt(props.fWin) / (parseInt(props.fWin)+ parseInt(props.fLoss))) * 100)
+  if(Number.isNaN(sWinrate)) {
+    sWinrate = 0
+  }
+  if(Number.isNaN(fWinrate)) {
+    fWinrate = 0
+  }
+  if(props.sQueue == "RANKED_TFT_DOUBLE_UP") {
+    var soloQueue = useState(sQueue)
+    var sTier = ""
+    var sRank = "Unranked"
+    var sLp = "0"
+    var sWin = "0"
+    var sLoss = "0"
+    var flexQueue = useState(fQueue)
+    var fTier = ""
+    var fRank = "Unranked"
+    var fLp = "0"
+    var fWin = "0"
+    var fLoss = "0"
+  }
   
   useEffect(() => {
     if(props.sQueue == undefined) {
+      setsQueue("Ranked Solo")
+      setfQueue("Ranked Flex")
+    }
+    else if(props.sQueue == "RANKED_TFT_DOUBLE_UP") {
       setsQueue("Ranked Solo")
       setfQueue("Ranked Flex")
     }
@@ -97,23 +136,24 @@ export const SummonerCard = (props: SummonerDetails) => {
       <Box p={6} mb={5}>
         <Stack spacing={0} align={"center"} mb={5}>
           <Heading fontSize={"4xl"} fontWeight={500} fontFamily={"body"}>
-            {props.summonerName}
+            {summonerName}
           </Heading>
-          <Text color={"gray.500"} fontSize={"2xl"}>lvl {props.summonerLvl}</Text>
+          <Text color={"gray.500"} fontSize={"2xl"}>lvl {summonerLvl}</Text>
         </Stack>
         <HStack>
-        <Stack spacing={0} align={"center"} mb={-5} ml={'2vw'}>
+        <Stack spacing={0} align={"center"} ml={'2vw'}>
           <Text fontFamily={"body"} fontSize={'2xl'} fontWeight={400}>{sQueue}</Text>
           <Stack alignSelf={'baseline'} alignItems={'center'}>
             <Image 
-              src={rank[props.sTier]}
+              src={rank[sTier]}
               objectFit='cover'
               width={'6em'}
               height={'7em'}
             />
-            <Text>{props.sTier} {props.sRank}</Text>
-            <Text>{props.sLp} LP</Text>
-            <Text>{sWinrate}%</Text>
+            <Text fontSize={15} lineHeight={1}>{sTier} {sRank}</Text>
+            <Text fontSize={15} lineHeight={1}>W: {sWin} | L: {sLoss}</Text>
+            <Text fontSize={15} lineHeight={1}>{sLp} LP</Text>
+            <Text fontSize={15} lineHeight={1}>{sWinrate}%</Text>
           </Stack>
         </Stack >
           <Center height='8em'>
@@ -122,14 +162,15 @@ export const SummonerCard = (props: SummonerDetails) => {
           <Stack spacing={0} align={"center"}>
             <Text fontFamily={"body"} fontSize={'2xl'} fontWeight={400}>{fQueue}</Text>
             <Image 
-              src={rank[props.fTier]}
+              src={rank[fTier]}
               objectFit='cover'
               width={'6em'}
               height={'7em'}
             />
-            <Text>{props.fTier}</Text>
-            <Text>{props.fLp} LP</Text>
-            <Text>{fWinrate}%</Text>
+            <Text fontSize={15} lineHeight={1.5}>{fTier} {fRank}</Text>
+            <Text fontSize={15} lineHeight={1.5}>W: {fWin} | L: {fLoss}</Text>
+            <Text fontSize={15} lineHeight={1.5}>{fLp} LP</Text>
+            <Text fontSize={15} lineHeight={1.5}>{fWinrate}%</Text>
           </Stack>
         </HStack>
       </Box>
@@ -146,8 +187,8 @@ SummonerCard.defaultProps = {
   sLp: "0",
   sWin: "0",
   sLoss: "0",
-  fTier: "Unranked",
-  fRank: "",
+  fTier: "",
+  fRank: "Unranked",
   fLp: "0",
   fWin: "0",
   fLoss: "0",

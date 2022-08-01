@@ -24,7 +24,46 @@ export const rolesMatchData = async (matchData?: Array<any>, puuid?: string) => 
         return JSON.stringify(summoner.lane)
     })
     const results:string[] = await Promise.all(getDetailedData)
-    return results
+    //Turns Roles into a dictionary
+    const roleDictionary = async (stringList: string[]) => {
+        var dict = {}
+        var top = 0;
+        var mid = 0;
+        var bottom = 0;
+        var jg = 0;
+        var aram = 0;
+        const roles = stringList
+        for(let i = 0; i < roles.length; i++) {
+            console.log("ROLE: ", roles[i])
+            switch(roles[i]) {
+                case '"TOP"':
+                    top++;
+                    break;
+                case '"MIDDLE"':
+                    mid++;
+                    break;
+                case '"BOTTOM"':
+                    bottom++;
+                    break;
+                case '"JUNGLE"':
+                    jg++;
+                    break;
+                case '"NONE"':
+                    aram++
+                    break;
+            }
+        }
+        dict["top"] = top;
+        dict["mid"] = mid;
+        dict["bottom"] = bottom;
+        dict["jg"] = jg;
+        dict["aram"] = aram;
+        return dict;
+    }
+    console.log("RESULT PRE DICT: ", results)
+    const resultDict = await roleDictionary(results)
+    console.log("DICTIONARY: ", resultDict)
+    return resultDict
 }
 //Gives specific data from existing data
 //Data: [ChampName, ChampLvl, kills, deaths, assists, cs, timePlayed, lane, winBoolean]

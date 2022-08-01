@@ -17,7 +17,7 @@ const SummonerDetails = () => {
   const [data, setData] = useState(undefined);
   const [ranked, setRanked] = useState([]);
   const [matchData, setMatchData] = useState([])
-  const [roleData, setRoleData] = useState([])
+  const [roleData, setRoleData] = useState({})
   const router = useRouter();
   //const jsonData = JSON.parse(data)
   const icon = data?.profileIconId?.toString();
@@ -78,6 +78,12 @@ const SummonerDetails = () => {
       </Container>
     );
   }
+  {
+    if(ranked[0]?.queueType == "RANKED_TFT_DOUBLE_UP") {
+      ranked[0] = null;
+    }
+
+  }
 
   return (
     <Container height="100vh">
@@ -119,7 +125,7 @@ const SummonerDetails = () => {
             boxShadow={"2xl"}
             rounded={"lg"}
             overflow={"hidden"}
-            overflowY={'auto'}
+            overflowY={['auto', 'hidden']}
           >
             <HStack w={'80vw'} h={'60%'} ml={10}>
             <Stack
@@ -134,25 +140,27 @@ const SummonerDetails = () => {
             <Stack
               maxW={"50%"}
               w={"100%"}
-              maxH={"50%"}
+              maxH={"80%"}
+              ml={10}
               h={"100%"}>
+                <StatRoles roles={roleData}/>
 
             </Stack>
             </HStack>
            
             <Divider alignSelf={'center'} mt={'-10'}/>
               <Stack w={'auto'} height={'auto'}>
-                <Stack direction={['row','column']} marginY={["5vh", 0]} marginTop={['1vh', 0]} marginX={['20%','0']}>
+                <Stack direction={['row','column']} marginY={["5vh", 0]} marginTop={['1vh', 0]} marginX={['20%','1vw']}>
                 <Text fontFamily={'Bebas Neue'} fontSize={[36,48]} color={'#15172A'}>MATCH</Text>
                 <Text fontFamily={'Bebas Neue'} fontSize={[36,48]} color={'#15172A'}>History</Text>
                 </Stack>
               <HStack>
-                <Flex ml={'14%'} mt={'-15%'}>
+                <Flex ml={['14%','15%']} mt={'-15%'}>
                 <Box
                   maxW={"max-content"}
                   w={"max-content"}
                   maxH={"max-content"}
-                  h={"max-content"}
+                  h={["max-content", "35vh"]}
                   bg={'white'}
                   rounded={"3xl"}
                   overflow={"hidden"}
