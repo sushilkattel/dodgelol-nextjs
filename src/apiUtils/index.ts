@@ -1,5 +1,10 @@
 import axios from "axios";
-import { summonerDataQuery, summonerMatchlistQuery, summonerRankedQuery, summonerGameQuery} from "./apiUtils";
+import {
+  summonerDataQuery,
+  summonerMatchlistQuery,
+  summonerRankedQuery,
+  summonerGameQuery,
+} from "./apiUtils";
 
 export const getSummonerData = async (username: string): Promise<any> => {
   const url = summonerDataQuery(username);
@@ -20,61 +25,60 @@ export const getSummonerRanked = async (id: string): Promise<any> => {
     let resp = await axios.get(url, {
       params: {
         api_key: process.env.NEXT_PUBLIC_API_KEY,
-      }
+      },
     });
     if (resp.status === 200 && resp.data) {
       return resp.data;
     }
     return null;
-  } catch(e) {
-    console.log(`Error fetching summoner rank: ${e}`)
-    return null
+  } catch (e) {
+    console.log(`Error fetching summoner rank: ${e}`);
+    return null;
   }
 };
-export const getSummonerMatchList = async (puuid:string): Promise<any> => {
-  const url = summonerMatchlistQuery(puuid)
+export const getSummonerMatchList = async (puuid: string): Promise<any> => {
+  const url = summonerMatchlistQuery(puuid);
   try {
     let resp = await axios.get(url, {
       params: {
         api_key: process.env.NEXT_PUBLIC_API_KEY,
-      }
+      },
     });
     if (resp.status === 200 && resp.data) {
-      return resp.data
+      return resp.data;
     }
-    return null
-  } catch(e) {
-    console.log('Error fetching summoner matchlist')
-    return null
+    return null;
+  } catch (e) {
+    console.log("Error fetching summoner matchlist");
+    return null;
   }
-  
-}
+};
 export const getGameData = async (gameId?: string): Promise<any> => {
-  console.log("GAME ID: ", gameId)
+  console.log("GAME ID: ", gameId);
   const url = summonerGameQuery(gameId);
   try {
-      let resp = await axios.get(url, {
+    let resp = await axios.get(url, {
       params: {
-          api_key: process.env.NEXT_PUBLIC_API_KEY,
+        api_key: process.env.NEXT_PUBLIC_API_KEY,
       },
-      });
-      if (resp.status === 200 && resp.data) {
+    });
+    if (resp.status === 200 && resp.data) {
       return resp.data;
-      }
-      return null;
+    }
+    return null;
   } catch (err) {
-      console.error(`Error fetching summoner game data: ${err}`);
-      return null;
-  }   
-}
+    console.error(`Error fetching summoner game data: ${err}`);
+    return null;
+  }
+};
 //Gets index of where the user is
 export const getIndex = (matchData?: any, puuid?: any): any => {
-  return matchData?.metadata?.participants?.findIndex(obj => obj === puuid);
-}
+  return matchData?.metadata?.participants?.findIndex((obj) => obj === puuid);
+};
 
 //valorant test
 export const getValorantLeaderboard = async (): Promise<any> => {
-  const url = `http://localhost:3080/valorantLeaderboard?`
+  const url = `http://localhost:3080/valorantLeaderboard?`;
   try {
     let resp = await axios.get(url);
     if (resp.status === 200 && resp.data) {
@@ -85,4 +89,4 @@ export const getValorantLeaderboard = async (): Promise<any> => {
     console.error(`Error fetching summoner data: ${err}`);
     return null;
   }
-}
+};

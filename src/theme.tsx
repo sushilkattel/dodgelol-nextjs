@@ -14,9 +14,9 @@ const theme = extendTheme({
   styles: {
     global: {
       body: {
-        bg: '#15172A'
-      }
-    }
+        bg: "#15172A",
+      },
+    },
   },
   semanticTokens: {
     colors: {
