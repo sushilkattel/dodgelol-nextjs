@@ -26,6 +26,9 @@ export const rolesMatchData = async (
   const getDetailedData = matchData.map(async (game) => {
     const index = getIndex(game, puuid);
     const summoner = game.info.participants[index];
+    if(game.info.gameMode == "ARAM" || game.info.gameMode == "ULTBOOK" || game.info.gameMode == "URF" || summoner.lane == "NONE") {
+      return '"ARAM"'
+    }
     return JSON.stringify(summoner.lane);
   });
   const results: string[] = await Promise.all(getDetailedData);
@@ -53,7 +56,7 @@ export const rolesMatchData = async (
         case '"JUNGLE"':
           jg++;
           break;
-        case '"NONE"':
+        case '"ARAM"':
           aram++;
           break;
       }
