@@ -80,30 +80,7 @@ const Index = () => {
             </VStack>
           </Flex>
         </Stack>
-        <footer>
-          <Text
-            fontFamily={"Bebas Neue"}
-            fontSize={24}
-            color={"white"}
-            ml={"2vw"}
-            mt={["60%", "5%"]}
-          >
-            © 2022 DodgeLoL
-          </Text>
-          <Text
-            fontFamily={"Bebas Neue"}
-            fontSize={[10, 16]}
-            color={"white"}
-            ml={"2vw"}
-            width={["90%", "50%"]}
-          >
-            DodgeLoL isn’t endorsed by Riot Games and doesn’t reflect the views
-            or opinions of Riot Games or anyone officially involved in producing
-            or managing League of Legends. League of Legends and Riot Games are
-            trademarks or registered trademarks of Riot Games, Inc. League of
-            Legends © Riot Games, Inc.‍
-          </Text>
-        </footer>
+        <Footer />
       </Main>
     </Container>
   );

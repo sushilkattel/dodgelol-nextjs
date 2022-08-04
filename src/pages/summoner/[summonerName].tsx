@@ -8,6 +8,7 @@ import {
   Divider,
   Flex,
   VStack,
+  Center,
 } from "@chakra-ui/react";
 import { Container } from "../../components/Container";
 import { Main } from "../../components/Main";
@@ -32,6 +33,7 @@ import { StatRoles } from "../../components/StatRoles";
 import { Search } from "../../components/Search";
 import { MiniSearch } from "../../components/MiniSearch";
 import { ArrowBtn } from "../../components/ArrowBtn";
+import { Footer } from "../../components/Footer";
 
 const SummonerDetails = () => {
   const [isLoading, setLoading] = useState(true);
@@ -55,6 +57,10 @@ const SummonerDetails = () => {
     const summonerName = router.query?.summonerName?.toString() || "";
     const fetchData = async () => {
       const resp = await getSummonerData(summonerName);
+      if(resp == "ERROR") {
+        console.log("ERROR CAUGHT!")
+        window.location.href = `/error`
+      }
       if (resp) {
         setData(resp);
         await fetchRank(resp.id);
@@ -114,7 +120,7 @@ const SummonerDetails = () => {
         @import
         url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
       </style>
-      <Main alignSelf={"baseline"} marginLeft={"2em"} pt={["1em", "3em"]}>
+      <Main alignSelf={"baseline"} marginLeft={[0,"2em"]} pt={["1em", "3em"]}>
         <HStack>
           <Image
             src="/logo.png"
@@ -150,9 +156,10 @@ const SummonerDetails = () => {
             fWin={ranked[1]?.wins}
             fLoss={ranked[1]?.losses}
           />
+          <Center>
           <Stack
             maxW={"100vw"}
-            w={"70vw"}
+            w={["80vw","70vw"]}
             maxH={"100%"}
             h={"100%"}
             pt={["0.5 em", "1em"]}
@@ -268,7 +275,9 @@ const SummonerDetails = () => {
               </Stack>
             </Box>
           </Stack>
+          </Center>
         </Stack>
+        <Footer/>
       </Main>
     </Container>
   );

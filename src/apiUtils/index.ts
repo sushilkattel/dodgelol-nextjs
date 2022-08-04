@@ -13,10 +13,10 @@ export const getSummonerData = async (username: string): Promise<any> => {
     if (resp.status === 200 && resp.data) {
       return resp.data;
     }
-    return null;
+    return "ERROR";
   } catch (err) {
     console.error(`Error fetching summoner data: ${err}`);
-    return null;
+    return "ERROR";
   }
 };
 export const getSummonerRanked = async (id: string): Promise<any> => {
