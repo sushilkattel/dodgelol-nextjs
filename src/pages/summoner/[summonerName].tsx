@@ -173,12 +173,12 @@ const SummonerDetails = () => {
                 <Stack maxW={"80%"} w={"100%"} maxH={"80%"} h={"100%"}>
                   <StatCs sLp={ranked[0]?.leaguePoints.toString()} />
                 </Stack>
-                <Stack maxW={"50%"} w={"100%"} maxH={"80%"} ml={10} h={"100%"}>
+                <Stack maxW={['100%',"50%"]} w={["200%","100%"]} maxH={"80%"} ml={10} h={"100%"}>
                   <StatRoles roles={roleData} />
                 </Stack>
               </HStack>
 
-              <Divider alignSelf={"center"} mt={"-10"} />
+              <Divider alignSelf={"center"} />
               <Stack w={"auto"} height={"auto"}>
                 <Stack
                   direction={["row", "column"]}

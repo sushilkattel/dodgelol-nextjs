@@ -60,7 +60,7 @@ export const StatRoles = (props: SummonerData) => {
     },
   };
   return (
-    <Stack w={"90%"} h={"100%"} ml={["20%", "-40%"]}>
+    <Stack w={['150%',"90%"]} h={['80%',"100%"]} ml={["20%", "-40%"]}>
       <style>
         @import
         url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
