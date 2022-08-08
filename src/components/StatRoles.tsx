@@ -60,13 +60,13 @@ export const StatRoles = (props: SummonerData) => {
     },
   };
   return (
-    <Stack w={['150%',"90%"]} h={['80%',"100%"]} ml={["20%", "-40%"]}>
+    <Stack w={["150%", "90%"]} h={["80%", "100%"]} ml={["20%", "-40%"]}>
       <style>
         @import
         url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
       </style>
       <Text fontFamily={"Bebas Neue"} fontSize={20}>
-        Summoner Lanes Played
+        Summoner Lanes Played Recently
       </Text>
       <ResponsiveBar
         data={data}

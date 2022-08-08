@@ -1,0 +1,7 @@
+.icon {
+    padding: 5px 10px;
+  }
+  .icon:hover {
+    transform: rotate(360deg);
+    transition: all 0.5s ease-in-out;
+  }

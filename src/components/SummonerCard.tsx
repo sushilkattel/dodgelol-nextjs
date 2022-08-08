@@ -144,7 +144,6 @@ export const SummonerCard = (props: SummonerDetails) => {
             }}
           />
         </Flex>
-
         <Box p={6} mb={5}>
           <Stack spacing={0} align={"center"} mb={5}>
             <Heading fontSize={"4xl"} fontWeight={500} fontFamily={"body"}>
@@ -155,30 +154,37 @@ export const SummonerCard = (props: SummonerDetails) => {
             </Text>
           </Stack>
           <HStack>
-            <Stack spacing={0} align={"center"} ml={"2vw"}>
-              <Text fontFamily={"body"} fontSize={"2xl"} fontWeight={400}>
-                {sQueue}
-              </Text>
-              <Stack alignSelf={"baseline"} alignItems={"center"}>
-                <Image
-                  src={rank[sTier]}
-                  objectFit="cover"
-                  width={"6em"}
-                  height={"7em"}
-                />
-                <Text fontSize={15} lineHeight={1}>
-                  {sTier} {sRank}
-                </Text>
-                <Text fontSize={15} lineHeight={1}>
-                  W: {sWin} | L: {sLoss}
-                </Text>
-                <Text fontSize={15} lineHeight={1}>
-                  {sLp} LP
-                </Text>
-                <Text fontSize={15} lineHeight={1}>
-                  {sWinrate}%
-                </Text>
-              </Stack>
+            <Stack spacing={0} alignSelf={"center"} ml={"2vw"}>
+              <Center>
+                <Stack alignSelf={"baseline"} alignItems={"center"}>
+                  <Text
+                    fontFamily={"body"}
+                    fontSize={"2xl"}
+                    fontWeight={400}
+                    align={"center"}
+                  >
+                    {sQueue}
+                  </Text>
+                  <Image
+                    src={rank[sTier]}
+                    objectFit="cover"
+                    width={"6em"}
+                    height={"7em"}
+                  />
+                  <Text fontSize={15} lineHeight={1}>
+                    {sTier} {sRank}
+                  </Text>
+                  <Text fontSize={15} lineHeight={1}>
+                    W: {sWin} | L: {sLoss}
+                  </Text>
+                  <Text fontSize={15} lineHeight={1}>
+                    {sLp} LP
+                  </Text>
+                  <Text fontSize={15} lineHeight={1}>
+                    {sWinrate}%
+                  </Text>
+                </Stack>
+              </Center>
             </Stack>
             <Center height="8em">
               <Divider orientation="vertical" />

@@ -26,8 +26,13 @@ export const rolesMatchData = async (
   const getDetailedData = matchData.map(async (game) => {
     const index = getIndex(game, puuid);
     const summoner = game.info.participants[index];
-    if(game.info.gameMode == "ARAM" || game.info.gameMode == "ULTBOOK" || game.info.gameMode == "URF" || summoner.lane == "NONE") {
-      return '"ARAM"'
+    if (
+      game.info.gameMode == "ARAM" ||
+      game.info.gameMode == "ULTBOOK" ||
+      game.info.gameMode == "URF" ||
+      summoner.lane == "NONE"
+    ) {
+      return '"ARAM"';
     }
     return JSON.stringify(summoner.lane);
   });
@@ -74,11 +79,25 @@ export const rolesMatchData = async (
   return resultDict;
 };
 //Gives specific data from existing data
-//Data: [ChampName, ChampLvl, kills, deaths, assists, cs, timePlayed, lane, winBoolean]
+//Data: [ChampName, ChampLvl, kills, deaths, assists, cs, timePlayed, lane, winBoolean, gameEndTime, gameMode]
 export const previewGameData = async (
   matchData?: Array<any>,
   puuid?: string
 ) => {
+  const queueIdList = {};
+  queueIdList[420] = "Ranked Solo";
+  queueIdList[440] = "Ranked Flex";
+  queueIdList[450] = "ARAM";
+  queueIdList[430] = "BLIND PICK";
+  queueIdList[0] = "CUSTOM";
+  queueIdList[72] = "HEXAKILL";
+  queueIdList[76] = "URF";
+  queueIdList[78] = "OFA";
+  queueIdList[83] = "BOT OFA";
+  queueIdList[700] = "CLASH";
+  queueIdList[900] = "ARURF";
+  queueIdList[400] = "NORMAL";
+
   const getPreviewData = matchData.map(async (game) => {
     let dataArray = [];
     const index = await getIndex(game, puuid);
@@ -90,9 +109,16 @@ export const previewGameData = async (
       summoner.deaths,
       summoner.assists,
       summoner.totalMinionsKilled,
-      Math.round(summoner.timePlayed / 60),
+      summoner.timePlayed,
       summoner.lane,
-      summoner.win
+      summoner.win,
+      game.info.gameEndTimestamp,
+      queueIdList[game.info.queueId]
+    );
+    console.log(
+      "QUEUE NAMES: ",
+      queueIdList[game.info.queueId],
+      game.info.queueId
     );
     return dataArray;
   });

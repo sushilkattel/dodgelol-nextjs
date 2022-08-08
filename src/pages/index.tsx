@@ -16,6 +16,7 @@ import { Search } from "../components/Search";
 import { ArrowBtn } from "../components/ArrowBtn";
 import { useState } from "react";
 import { useRouter } from "next/router";
+import { MiniLogo } from "../components/MiniLogo";
 
 const Index = () => {
   const [summonerName, setSummonerName] = useState("");
@@ -32,14 +33,7 @@ const Index = () => {
       </style>
       <Main>
         <HStack>
-          <Image
-            src="/logo.png"
-            alt="logo"
-            width={["10vw", "5vw"]}
-            marginTop={"8vh"}
-            marginLeft={["3vw", "1vw"]}
-            draggable={"false"}
-          />
+          <MiniLogo width={["10vw", "5vw"]} marginTop={"8vh"} />
           <Flex alignSelf={"flex-end"} width={"100%"} align={"end"}>
             {/*<Link fontFamily={'Bebas Neue'} fontSize={32} color={'white'} textAlign={'center'}>Valorant</Link>*/}
           </Flex>
