@@ -12,3 +12,19 @@
     height: 100%;
     background-color: #15172A;
   }
+
+  #video {
+    position:relative;
+    object-fit: cover;
+    width: 100%;
+  }
+  #blur {
+    -webkit-filter: blur(10px);
+  }
+
+  #headingSmall {
+    color: #F66F7E;
+    font-family: 'Bebas Neue';
+    font-size: 50px;
+    margin-left: 0.5vw;
+  }

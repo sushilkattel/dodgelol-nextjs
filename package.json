@@ -9,7 +9,7 @@
   "dependencies": {
     "@chakra-ui/icons": "^1.1.7",
     "@chakra-ui/react": "1.8.8",
-    "@emotion/react": "^11",
+    "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11",
     "@nivo/bar": "^0.79.1",
     "@nivo/core": "^0.79.0",

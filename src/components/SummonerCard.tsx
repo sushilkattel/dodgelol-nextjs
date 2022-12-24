@@ -154,14 +154,13 @@ export const SummonerCard = (props: SummonerDetails) => {
             </Text>
           </Stack>
           <HStack>
-            <Stack spacing={0} alignSelf={"center"} ml={"2vw"}>
+            <Stack spacing={0} ml={"2vw"}>
               <Center>
                 <Stack alignSelf={"baseline"} alignItems={"center"}>
                   <Text
                     fontFamily={"body"}
                     fontSize={"2xl"}
                     fontWeight={400}
-                    align={"center"}
                   >
                     {sQueue}
                   </Text>
