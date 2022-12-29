@@ -7,6 +7,7 @@ interface SummonerData {
 }
 
 export const StatRoles = (props: SummonerData) => {
+  const fontColor = "#15172A"
   const data = [
     {
       map: "TOP",
@@ -65,7 +66,7 @@ export const StatRoles = (props: SummonerData) => {
         @import
         url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
       </style>
-      <Text fontFamily={"Bebas Neue"} fontSize={20}>
+      <Text fontFamily={"Bebas Neue"} fontSize={20} color={fontColor}>
         Summoner Lanes Played Recently
       </Text>
       <ResponsiveBar

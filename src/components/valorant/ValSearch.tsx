@@ -8,6 +8,7 @@ export const ValSearch = (props: InputProps) => (
       variant={'filled'}
       width={["60vw", "40vw"]}
       _outline={'1px dotted black'}
+      backgroundColor={"white"}
       outlineColor={'#808080'}
       //width={{base: '30vw', md: '40vw', sm: '50vw', xs: '60vw'}}
       height={["6vh", "8vh"]}

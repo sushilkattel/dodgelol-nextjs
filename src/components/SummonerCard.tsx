@@ -31,6 +31,7 @@ interface SummonerDetails {
   fLoss: string;
 }
 export const SummonerCard = (props: SummonerDetails) => {
+  const fontColor = "#15172A"
   const [sQueue, setsQueue] = useState(props.sQueue);
   const [fQueue, setfQueue] = useState(props.fQueue);
   var summonerName = props.summonerName;
@@ -124,7 +125,7 @@ export const SummonerCard = (props: SummonerDetails) => {
         w={["80vw", "25vw"]}
         maxH={"100%"}
         h={"auto"}
-        bg={useColorModeValue("white", "gray.800")}
+        bg= "white"
         boxShadow={"2xl"}
         rounded={"lg"}
         overflow={"hidden"}
@@ -146,7 +147,7 @@ export const SummonerCard = (props: SummonerDetails) => {
         </Flex>
         <Box p={6} mb={5}>
           <Stack spacing={0} align={"center"} mb={5}>
-            <Heading fontSize={"4xl"} fontWeight={500} fontFamily={"body"}>
+            <Heading fontSize={"4xl"} fontWeight={500} fontFamily={"body"} color={fontColor}>
               {summonerName}
             </Heading>
             <Text color={"gray.500"} fontSize={"2xl"}>
@@ -161,6 +162,7 @@ export const SummonerCard = (props: SummonerDetails) => {
                     fontFamily={"body"}
                     fontSize={"2xl"}
                     fontWeight={400}
+                    color={fontColor}
                   >
                     {sQueue}
                   </Text>
@@ -170,16 +172,16 @@ export const SummonerCard = (props: SummonerDetails) => {
                     width={"6em"}
                     height={"7em"}
                   />
-                  <Text fontSize={15} lineHeight={1}>
+                  <Text fontSize={15} lineHeight={1} color={fontColor}>
                     {sTier} {sRank}
                   </Text>
-                  <Text fontSize={15} lineHeight={1}>
+                  <Text fontSize={15} lineHeight={1} color={fontColor}>
                     W: {sWin} | L: {sLoss}
                   </Text>
-                  <Text fontSize={15} lineHeight={1}>
+                  <Text fontSize={15} lineHeight={1} color={fontColor}>
                     {sLp} LP
                   </Text>
-                  <Text fontSize={15} lineHeight={1}>
+                  <Text fontSize={15} lineHeight={1} color={fontColor}>
                     {sWinrate}%
                   </Text>
                 </Stack>
@@ -189,7 +191,7 @@ export const SummonerCard = (props: SummonerDetails) => {
               <Divider orientation="vertical" />
             </Center>
             <Stack spacing={0} align={"center"}>
-              <Text fontFamily={"body"} fontSize={"2xl"} fontWeight={400}>
+              <Text fontFamily={"body"} fontSize={"2xl"} fontWeight={400} color={fontColor}>
                 {fQueue}
               </Text>
               <Image
@@ -198,16 +200,16 @@ export const SummonerCard = (props: SummonerDetails) => {
                 width={"6em"}
                 height={"7em"}
               />
-              <Text fontSize={15} lineHeight={1.5}>
+              <Text fontSize={15} lineHeight={1.5} color={fontColor}>
                 {fTier} {fRank}
               </Text>
-              <Text fontSize={15} lineHeight={1.5}>
+              <Text fontSize={15} lineHeight={1.5} color={fontColor}>
                 W: {fWin} | L: {fLoss}
               </Text>
-              <Text fontSize={15} lineHeight={1.5}>
+              <Text fontSize={15} lineHeight={1.5} color={fontColor}>
                 {fLp} LP
               </Text>
-              <Text fontSize={15} lineHeight={1.5}>
+              <Text fontSize={15} lineHeight={1.5} color={fontColor}>
                 {fWinrate}%
               </Text>
             </Stack>

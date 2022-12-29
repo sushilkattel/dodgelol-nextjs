@@ -46,7 +46,7 @@ const SummonerDetails = () => {
   const icon = data?.profileIconId?.toString();
   const name = data?.name?.toString();
   const lvl = data?.summonerLevel?.toString();
-  const bgColor = useColorModeValue("white", "gray.800");
+  const bgColor = "white";
   //button stuff
   const [summonerNameSearch, setSummonerNameSearch] = useState("");
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {

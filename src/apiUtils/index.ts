@@ -78,7 +78,7 @@ export const getIndex = (matchData?: any, puuid?: any): any => {
 
 //valorant test
 export const getValorantLeaderboard = async (): Promise<any> => {
-  const url = `http://localhost:3080/valorantLeaderboard?`;
+  const url = `https://dodgelol.gg/api/valorantLeaderboard?`;
   try {
     let resp = await axios.get(url);
     if (resp.status === 200 && resp.data) {

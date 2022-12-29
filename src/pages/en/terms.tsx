@@ -44,10 +44,10 @@ import {
           </Heading>
           <Text mb={4}>
             The Service allows you to view statistical information about
-            League of Legends players. The Service is not endorsed by Riot Games
-            and does not reflect the views or opinions of Riot Games or anyone importally involved in producing or managing League of Legends. League of Legends
+            Riot Games Services Players. The Service is not endorsed by Riot Games
+            and does not reflect the views or opinions of Riot Games or anyone importally involved in producing or managing Riot Games Services. Riot Games Services
           and Riot Games are trademarks or registered trademarks of Riot Games,
-          Inc. League of Legends © Riot Games, Inc.
+          Inc. © Riot Games, Inc.
         </Text>
         <Heading as="h3" size="md" mb={4} fontWeight="bold" mt={marginTop}>
           2. User Input

@@ -7,6 +7,7 @@ import {
   Divider,
   Stack,
   Link,
+  useBreakpointValue,
 } from "@chakra-ui/react";
 import { Hero } from "../components/Hero";
 import { Container } from "../components/Container";
@@ -25,17 +26,29 @@ const Index = () => {
     window.location.href = `/summoner/${summonerName}`;
   };
 
+  // Use the useBreakpointValue hook to get the value of a style
+  // based on the current breakpoint
+  const marginTop = useBreakpointValue({ base: "8vh", sm: "10vh", md: "12vh", lg: "16vh" });
+  const width = useBreakpointValue({ base: "10vw", sm: "8vw", md: "7.5vw", lg: "5vw" });
+  const imageWidth = useBreakpointValue({ base: "50vw", sm: "45vw", md: "40vw", lg: "30vw" });
+  const imageMarginTop = useBreakpointValue({ base: "8vh", sm: "10vh", md: "12vh", lg: "16vh" });
+  const imageMarginLeft = useBreakpointValue({ base: "1vw", sm: "1.5vw", md: "1.5vw", lg: "2vw" });
+  const paddingTop = useBreakpointValue({ base: 5, sm: 4, md: 3, lg: 0 });
+  const divWidth = useBreakpointValue({ base: "0", sm: "100%", md: "100%", lg: "100%" });
+  const divHeight = useBreakpointValue({ base: "0vh", sm: "1vh", md: "1vh", lg: "2vh" });
+
+
   return (
-    <Container height="100vh" width={"100vw"}>
+    <Container height="auto" width={"100vw"} mt={["0vh","-5vh","-10vh"]}>
       <style>
         @import
         url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
       </style>
       <Main>
         <HStack>
-          <MiniLogo width={["10vw", "5vw"]} marginTop={"8vh"} />
+          <MiniLogo width={width} marginTop={marginTop} />
           <Flex alignSelf={"flex-end"} width={"100%"} align={"end"}>
-            {/*<Link fontFamily={'Bebas Neue'} fontSize={32} color={'white'} textAlign={'center'}>Valorant</Link>*/}
+            {/*<Link fontFamily={'Bebas Neue'} fontSize={fontSize} color={'white'} textAlign={'center'}>Valorant</Link>*/}
           </Flex>
         </HStack>
         <Stack
@@ -46,9 +59,9 @@ const Index = () => {
           <Image
             src="/yasuo.png"
             alt="logo"
-            width={["50vw", "30vw"]}
-            marginTop={"8vh"}
-            marginLeft={"1vw"}
+            width={imageWidth}
+            marginTop={imageMarginTop}
+            marginLeft={imageMarginLeft}
             draggable={"false"}
             opacity={"40%"}
           />
@@ -67,9 +80,9 @@ const Index = () => {
                 </Flex>
               </form>
               <Divider
-                paddingTop={[5, 0]}
-                width={["0", "100%"]}
-                height={["0vh", "2vh"]}
+                paddingTop={paddingTop}
+                width={divWidth}
+                height={divHeight}
               />
             </VStack>
           </Flex>
