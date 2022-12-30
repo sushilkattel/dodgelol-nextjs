@@ -31,14 +31,16 @@ const Index = () => {
           <Stack
             direction="row"
             w="100vw"
-            h="40%"
+            h="full"
             bg="white"
             mb="-1%"
           >
-            <video autoPlay loop muted id="video" width="100%">
+            <Stack width={'100%'} height={["full",'full','450px']}>
+            <video autoPlay loop muted id="video" width="100%" style={{overflow: "hidden"}}>
               <source src="/valVid.mp4" type="video/mp4" />
             </video>
-            <Stack position="absolute" w="100%" h="full">
+            </Stack>
+            <Stack position="absolute" w="100%">
               <Image
                 src="/valLogo.png"
                 alt="logo"
@@ -66,7 +68,7 @@ const Index = () => {
               </Stack>
             </Stack>
           </Stack>
-          <Stack width="100%" height={"max-content"} bgColor="#FAF3DD" pb={'3vh'}>
+          <Stack width="100%" bgColor="#FAF3DD" p={'5vh'} height={"max-content"} pb={"10vh"}>
             <Text id="headingSmall" fontSize={[30, 50]} pl='0.5vw' pt={'0.5vh'}>
               FIND YOUR CALLING
             </Text>
@@ -86,7 +88,7 @@ const Index = () => {
             </Center>
           </Stack>
           <Center>
-          <Stack w={'max-content'} h={'100vh'}>
+          <Stack w={'max-content'} height={"100vh"}>
             <Box p={4} bgColor={"#FF4655"} rounded={'2xl'} overflow={"hidden"} overflowY={"auto"}>
               <LeaderboardCard data={data} />
             </Box>
