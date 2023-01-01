@@ -13,7 +13,7 @@ export const MiniSearch = (props: InputProps) => (
       fontSize="lg"
       rounded="md"
       color="teal"
-      _placeholder={{ color: "white" }}
+      _placeholder={{ color: "black" }}
       required
       {...props}
     />

@@ -33,7 +33,7 @@ export const StatCs = (props: SummonerData) => {
       rounded="md"
       borderColor="gray.300"
       borderWidth={1}
-      w={{ base: "full", lg: "50%" }}
+      w={{ base: "700px", lg: "50%" }}
       h="300px"
     >
       <style>

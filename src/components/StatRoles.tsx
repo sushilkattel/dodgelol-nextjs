@@ -70,9 +70,8 @@ export const StatRoles = (props: SummonerData) => {
       rounded="md"
       borderColor="gray.300"
       borderWidth={1}
-      w={{ base: "full", lg: "50%" }}
-      h={{ base: "400px", md: "300px" }}
-      maxH="450px"
+      w={{ base: "300px", md: "500px",lg: "90%" }}
+      h={{ base: "300px", md: "300px" }}
     >
       <style>
         @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');

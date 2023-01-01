@@ -118,7 +118,9 @@ const SummonerDetails = () => {
       </style>
       <VStack w="full" h="full">
         <HStack w="full" justifyContent="space-between">
-          <MiniLogo width={{ base: "70px", md: "90px" }} />
+          <a href="/">
+          <MiniLogo width={{ base: "60px", md: "70px" }} />
+          </a>
           <form onSubmit={handleSubmit}>
             <MiniSearch
               onKeyPress={e => {
@@ -147,7 +149,7 @@ const SummonerDetails = () => {
             fLoss={ranked[1]?.losses}
           />
           <Box
-            w="full"
+            w={"full"}
             h="full"
             bg={bgColor}
             boxShadow={"2xl"}
@@ -159,12 +161,24 @@ const SummonerDetails = () => {
             <Stack
               h="full"
               direction={"row"}
-              overflowY={"scroll"}
-              w="full"
+              overflowY={["auto", "initial"]}
+              w={"full"}
+              sx={{
+                '&::-webkit-scrollbar': {
+                  height: '8px',
+                  borderRadius: '100px',
+                },
+                '&::-webkit-scrollbar-thumb': {
+                  borderRadius: '100px',
+                  backgroundColor: `#15172A`,
+                },
+              }}
               alignItems={{ base: "center", lg: "flex-start" }}
             >
               <StatCs sLp={ranked[0]?.leaguePoints.toString()} />
+              <Stack w={["20%", "full"]}>
               <StatRoles roles={roleData} />
+              </Stack>
             </Stack>
 
             <Divider />
