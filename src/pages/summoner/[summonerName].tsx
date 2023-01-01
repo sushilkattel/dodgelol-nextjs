@@ -36,6 +36,8 @@ import { ArrowBtn } from "../../components/ArrowBtn";
 import { Footer } from "../../components/Footer";
 import { MiniLogo } from "../../components/MiniLogo";
 
+import "./[summonerName].module.css"
+
 const SummonerDetails = () => {
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState(undefined);
@@ -137,7 +139,7 @@ const SummonerDetails = () => {
             />
           </form>
         </HStack>
-        <Stack direction={["column", "row"]}>
+        <Stack direction={["column","column", "row"]}>
           <SummonerCard
             summonerIcon={icon}
             summonerName={name}
@@ -228,19 +230,8 @@ const SummonerDetails = () => {
                         alignContent={"center"}
                         alignItems={"center"}
                       >
-                        {/*matchData.map(game => (
-                  <MatchCard 
-                    champion={game[0]} 
-                    kills={game[2]} 
-                    deaths={game[3]} 
-                    assists={game[4]} 
-                    cs={game[5]} 
-                    time={game[6]} 
-                    status={game[8]} 
-                  />)) 
-                  //Data: [ChampName, ChampLvl, kills, deaths, assists, cs, timePlayed, lane, winBoolean]
-                  */}
-                        <Stack direction={["column", "row"]}>
+                        <Center>
+                        <Stack direction={["column","column", "row"]}>
                           <VStack>
                             {matchData
                               .splice(0, Math.ceil(matchData.length / 2))
@@ -278,6 +269,7 @@ const SummonerDetails = () => {
                             ))}
                           </VStack>
                         </Stack>
+                        </Center>
                       </Box>
                     </Flex>
                   </HStack>

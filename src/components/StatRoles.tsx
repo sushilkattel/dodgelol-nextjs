@@ -112,6 +112,7 @@ export const StatRoles = (props: SummonerData) => {
               {
                 on: "hover",
                 style: {
+                  itemTextColor: "black",
                   itemOpacity: 1,
                 },
               },

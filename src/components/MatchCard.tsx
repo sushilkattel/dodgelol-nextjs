@@ -126,20 +126,20 @@ export const MatchCard = (props: MatchDetails) => {
       <Box
         maxW={["50vw", "25vw"]}
         w={["50vw", "24.306vw"]}
-        maxH={["max-content", "25vh"]}
-        h={["max-content", "13vh"]}
+        maxH={["max-content", "max-content","25vh"]}
+        h={["max-content", "max-content","13vh"]}
         bg={bgColor}
         rounded={"3xl"}
         overflow={"hidden"}
       >
-        <Stack width={"100%"} mt={"-0.2em"}>
+        <Stack width={"100%"}>
           <Text
             fontFamily={"Bebas Neue"}
             alignSelf={["center", "center"]}
             mt={["0", "0.5vh"]}
             color={"#355070"}
             mb={"-2vh"}
-            fontSize={[25, 20]}
+            fontSize={"1.25vw"}
           >
             {gameMode}
           </Text>
@@ -148,16 +148,16 @@ export const MatchCard = (props: MatchDetails) => {
             alignSelf={["center", "center"]}
             color={"#7E7E7E"}
             mb={"-2vh"}
-            fontSize={[12, 10]}
+            fontSize={[12, 8, 10, 12]}
           >
             {timeago}
           </Text>
         </Stack>
-        <Stack direction={["column", "row"]} mt={[0, "-0.6em"]}>
+        <Stack direction={["column", "column", "row"]} mt={[0, "-0.6em"]}>
           <Image
             src={`https://ddragon.leagueoflegends.com/cdn/12.13.1/img/champion/${champion}.png`}
             style={{ borderRadius: 25 }}
-            alignSelf={["center", "flex-start"]}
+            alignSelf={["center","center", "flex-start"]}
             width={["15vw", "3.472vw"]}
             mt={"0vh"}
             ml={"0.5vw"}
@@ -169,19 +169,19 @@ export const MatchCard = (props: MatchDetails) => {
           >
             <Text
               fontFamily={"Bebas Neue"}
-              alignSelf={["center", "flex-start"]}
-              mb={"-2.2vh"}
-              fontSize={[30, 20]}
+              alignSelf={["center", "center", "flex-start"]}
+              mb={"-20%"}
+              fontSize={[20, 15, 20]}
               color={"#355070"}
             >
               {props.champion}
             </Text>
-            <Stack alignSelf={["center", "flex-start"]}>
+            <Stack alignSelf={["center", "center", "flex-start"]}>
               <Text
                 fontFamily={"source-sans-pro"}
-                alignSelf={["center", "flex-start"]}
-                mb={"-2vh"}
-                fontSize={14}
+                alignSelf={["center", "center", "flex-start"]}
+                mb={"-40%"}
+                fontSize={[14, 10, 14]}
                 color={"#7E7E7E"}
               >
                 Lvl {props.lvl}
@@ -189,8 +189,8 @@ export const MatchCard = (props: MatchDetails) => {
             </Stack>
             <Text
               fontFamily={"source-sans-pro"}
-              alignSelf={["center", "flex-start"]}
-              fontSize={10}
+              alignSelf={["center", "center", "flex-start"]}
+              fontSize={[10, 9, 10]}
               color={"#7E7E7E"}
             >
               {getTimePlayed()}
@@ -202,7 +202,7 @@ export const MatchCard = (props: MatchDetails) => {
               alignSelf={["center", "center"]}
               mt={["0", "0.6vh"]}
               mb={"-2vh"}
-              fontSize={[25, 20]}
+              fontSize={[20, 17, 20]}
               color={"#F64545"}
             >
               {props.kills}/{props.deaths}/{props.assists}
@@ -211,7 +211,7 @@ export const MatchCard = (props: MatchDetails) => {
               fontFamily={"source-sans-pro"}
               alignSelf={["center", "center"]}
               mt={"-2vh"}
-              fontSize={14}
+              fontSize={[14, 12, 14]}
               color={"#7E7E7E"}
             >
               {getKDA()} KDA
@@ -222,7 +222,7 @@ export const MatchCard = (props: MatchDetails) => {
                 alignSelf={["center", "center"]}
                 mt={"-1.4vh"}
                 color={"#355070"}
-                fontSize={14}
+                fontSize={[14, 12, 14]}
               >
                 {getRating()}
               </Text>
@@ -234,7 +234,7 @@ export const MatchCard = (props: MatchDetails) => {
               alignSelf={["center", "center"]}
               mt={["0", "1vh"]}
               mb={"-2vh"}
-              fontSize={[25, 20]}
+              fontSize={[20,15, 20]}
               color={"#355070"}
             >
               {props.cs} CS
@@ -244,7 +244,7 @@ export const MatchCard = (props: MatchDetails) => {
               alignSelf={["center", "center"]}
               mt={"-2vh"}
               color={"#7E7E7E"}
-              fontSize={14}
+              fontSize={[14,12, 14]}
             >
               ({getCs()})
             </Text>
@@ -252,7 +252,7 @@ export const MatchCard = (props: MatchDetails) => {
           <Stack
             height={["10vh", "20vh"]}
             align={["center", "flex-start"]}
-            direction={["column", "row"]}
+            direction={["column", "column","row"]}
           >
             <Divider
               orientation={"vertical"}
@@ -265,7 +265,7 @@ export const MatchCard = (props: MatchDetails) => {
               <Text
                 align={"center"}
                 fontFamily={"Bebas Neue"}
-                fontSize={40}
+                fontSize={[40, 25, 40]}
                 color={wlColor}
                 ml={[0, "0.2em"]}
               >

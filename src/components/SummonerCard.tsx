@@ -145,6 +145,7 @@ export const SummonerCard = (props: SummonerDetails) => {
             }}
           />
         </Flex>
+        <Center>
         <Box p={6} mb={5}>
           <Stack spacing={0} align={"center"} mb={5}>
             <Heading fontSize={"4xl"} fontWeight={500} fontFamily={"body"} color={fontColor}>
@@ -155,7 +156,7 @@ export const SummonerCard = (props: SummonerDetails) => {
             </Text>
           </Stack>
           <HStack>
-            <Stack spacing={0} ml={"2vw"}>
+            <Stack spacing={0} >
               <Center>
                 <Stack alignSelf={"baseline"} alignItems={"center"}>
                   <Text
@@ -215,6 +216,7 @@ export const SummonerCard = (props: SummonerDetails) => {
             </Stack>
           </HStack>
         </Box>
+        </Center>
       </Box>
     </Center>
   );
