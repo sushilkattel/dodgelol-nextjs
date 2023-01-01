@@ -17,8 +17,7 @@ const index = () => {
     <Container height="100vh">
       <MiniLogo width={["10vw", "5vw"]} marginTop={"2vh"} />
       <style>
-        @import
-        url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
       </style>
       <Center>
         <Stack mt={"30vh"}>
@@ -28,11 +27,7 @@ const index = () => {
             </Text>
             <Link href="/">
               <a>
-                <Text
-                  color={"cyan"}
-                  textDecoration={"underline"}
-                  textAlign={"center"}
-                >
+                <Text color={"cyan"} textDecoration={"underline"} textAlign={"center"}>
                   HOME
                 </Text>
               </a>
@@ -43,7 +38,7 @@ const index = () => {
           </Stack>
           <HStack pt={"2vh"} alignSelf={"center"}>
             <form onSubmit={handleSubmit}>
-              <Search onChange={(e) => setSummonerName(e.target.value)} />
+              <Search onChange={e => setSummonerName(e.target.value)} />
               <ArrowBtn type="submit" />
             </form>
           </HStack>

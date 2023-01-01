@@ -73,7 +73,7 @@ export const getGameData = async (gameId?: string): Promise<any> => {
 };
 //Gets index of where the user is
 export const getIndex = (matchData?: any, puuid?: any): any => {
-  return matchData?.metadata?.participants?.findIndex((obj) => obj === puuid);
+  return matchData?.metadata?.participants?.findIndex(obj => obj === puuid);
 };
 
 //valorant test

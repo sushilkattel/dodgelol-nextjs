@@ -7,7 +7,7 @@ interface SummonerData {
 }
 
 export const StatRoles = (props: SummonerData) => {
-  const fontColor = "#15172A"
+  const fontColor = "#15172A";
   const data = [
     {
       map: "TOP",
@@ -61,10 +61,17 @@ export const StatRoles = (props: SummonerData) => {
     },
   };
   return (
-    <Stack w={["150%", "90%"]} h={["80%", "100%"]} ml={["20%", "-40%"]}>
+    <Stack
+      p={2}
+      rounded="md"
+      borderColor="gray.300"
+      borderWidth={1}
+      w={{ base: "full", lg: "50%" }}
+      h={{ base: "400px", md: "300px" }}
+      maxH="450px"
+    >
       <style>
-        @import
-        url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
       </style>
       <Text fontFamily={"Bebas Neue"} fontSize={20} color={fontColor}>
         Summoner Lanes Played Recently
@@ -74,7 +81,7 @@ export const StatRoles = (props: SummonerData) => {
         theme={theme}
         keys={["lane"]}
         indexBy="map"
-        margin={{ top: 10, right: 150, bottom: 50, left: 20 }}
+        margin={{ top: 10, right: 70, bottom: 60, left: 20 }}
         padding={0.3}
         valueScale={{ type: "linear" }}
         indexScale={{ type: "band", round: true }}
@@ -94,6 +101,9 @@ export const StatRoles = (props: SummonerData) => {
           from: "color",
           modifiers: [["darker", 1.6]],
         }}
+        axisBottom={{
+          tickRotation: -45,
+        }}
         legends={[
           {
             dataFrom: "keys",
@@ -107,7 +117,7 @@ export const StatRoles = (props: SummonerData) => {
             itemHeight: 20,
             itemDirection: "left-to-right",
             itemOpacity: 0.85,
-            symbolSize: 20,
+            symbolSize: 10,
             effects: [
               {
                 on: "hover",

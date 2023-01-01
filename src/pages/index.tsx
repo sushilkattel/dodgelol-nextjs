@@ -37,12 +37,10 @@ const Index = () => {
   const divWidth = useBreakpointValue({ base: "0", sm: "100%", md: "100%", lg: "100%" });
   const divHeight = useBreakpointValue({ base: "0vh", sm: "1vh", md: "1vh", lg: "2vh" });
 
-
   return (
-    <Container height="auto" width={"100vw"} mt={["0vh","-5vh","-10vh"]}>
+    <Container height="auto" width={"100vw"} mt={["0vh", "-5vh", "-10vh"]}>
       <style>
-        @import
-        url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
       </style>
       <Main>
         <HStack>
@@ -51,11 +49,7 @@ const Index = () => {
             {/*<Link fontFamily={'Bebas Neue'} fontSize={fontSize} color={'white'} textAlign={'center'}>Valorant</Link>*/}
           </Flex>
         </HStack>
-        <Stack
-          width={"100vw"}
-          direction={["column", "row"]}
-          alignItems={"center"}
-        >
+        <Stack width={"100vw"} direction={["column", "row"]} alignItems={"center"}>
           <Image
             src="/yasuo.png"
             alt="logo"
@@ -74,16 +68,12 @@ const Index = () => {
               <form onSubmit={handleSubmit}>
                 <Flex marginBlock={[-10, 0]}>
                   <HStack style={divStyle}>
-                    <Search onChange={(e) => setSummonerName(e.target.value)} />
+                    <Search onChange={e => setSummonerName(e.target.value)} />
                     <ArrowBtn type="submit" />
                   </HStack>
                 </Flex>
               </form>
-              <Divider
-                paddingTop={paddingTop}
-                width={divWidth}
-                height={divHeight}
-              />
+              <Divider paddingTop={paddingTop} width={divWidth} height={divHeight} />
             </VStack>
           </Flex>
         </Stack>

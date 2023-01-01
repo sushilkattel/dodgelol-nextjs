@@ -9,23 +9,17 @@ import {
   Flex,
   VStack,
   Center,
+  Grid,
+  GridItem,
 } from "@chakra-ui/react";
 import { Container } from "../../components/Container";
 import { Main } from "../../components/Main";
 import { SummonerCard } from "../../components/SummonerCard";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import {
-  getSummonerData,
-  getSummonerMatchList,
-  getSummonerRanked,
-} from "../../apiUtils";
+import { getSummonerData, getSummonerMatchList, getSummonerRanked } from "../../apiUtils";
 import { StatCs } from "../../components/StatCs";
-import {
-  previewGameData,
-  rolesMatchData,
-  summonerMatch,
-} from "../../apiUtils/summonerMatch";
+import { previewGameData, rolesMatchData, summonerMatch } from "../../apiUtils/summonerMatch";
 import axios from "axios";
 import { MatchCard } from "../../components/MatchCard";
 import { match } from "assert";
@@ -36,7 +30,7 @@ import { ArrowBtn } from "../../components/ArrowBtn";
 import { Footer } from "../../components/Footer";
 import { MiniLogo } from "../../components/MiniLogo";
 
-import "./[summonerName].module.css"
+import "./[summonerName].module.css";
 
 const SummonerDetails = () => {
   const [isLoading, setLoading] = useState(true);
@@ -118,28 +112,23 @@ const SummonerDetails = () => {
   }
 
   return (
-    <Container height="100vh">
+    <Container p={8}>
       <style>
-        @import
-        url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
       </style>
-      <Main alignSelf={"baseline"} marginLeft={[0, "2em"]} pt={["1em", "3em"]}>
-        <HStack>
-          <MiniLogo
-            width={["0vw", "4vw"]}
-            marginLeft={["3vw", "1vw"]}
-            marginTop={0}
-          />
+      <VStack w="full" h="full">
+        <HStack w="full" justifyContent="space-between">
+          <MiniLogo width={{ base: "70px", md: "90px" }} />
           <form onSubmit={handleSubmit}>
             <MiniSearch
-              onKeyPress={(e) => {
+              onKeyPress={e => {
                 e.key === "Enter" && e.preventDefault();
               }}
-              onBlur={(e) => setSummonerNameSearch(e.target.value)}
+              onBlur={e => setSummonerNameSearch(e.target.value)}
             />
           </form>
         </HStack>
-        <Stack direction={["column","column", "row"]}>
+        <Stack w="full" spacing={8} h="full" direction={{ base: "column", md: "row" }}>
           <SummonerCard
             summonerIcon={icon}
             summonerName={name}
@@ -157,129 +146,63 @@ const SummonerDetails = () => {
             fWin={ranked[1]?.wins}
             fLoss={ranked[1]?.losses}
           />
-          <Center>
+          <Box
+            w="full"
+            h="full"
+            bg={bgColor}
+            boxShadow={"2xl"}
+            rounded={"lg"}
+            overflow={"hidden"}
+            overflowY={["auto", "hidden"]}
+            p={4}
+          >
             <Stack
-              maxW={"100vw"}
-              w={["80vw", "70vw"]}
-              maxH={"100%"}
-              h={"100%"}
-              pt={["0.5 em", "1em"]}
+              h="full"
+              direction={{ base: "column", lg: "row" }}
+              w="full"
+              alignItems={{ base: "center", lg: "flex-start" }}
             >
-              <Box
-                marginLeft={[0, 10]}
-                maxW={["80vw", "65vw"]}
-                w={["80vw", "70vw"]}
-                maxH={"80vh"}
-                h={"78vh"}
-                bg={bgColor}
-                boxShadow={"2xl"}
-                rounded={"lg"}
-                overflow={"hidden"}
-                overflowY={["auto", "hidden"]}
-              >
-                <HStack w={"80vw"} h={"60%"} ml={10} overflowY={"auto"}>
-                  <Stack maxW={"80%"} w={"100%"} maxH={"80%"} h={"100%"}>
-                    <StatCs sLp={ranked[0]?.leaguePoints.toString()} />
-                  </Stack>
-                  <Stack
-                    maxW={["100%", "50%"]}
-                    w={["200%", "100%"]}
-                    maxH={"80%"}
-                    ml={10}
-                    h={"100%"}
-                  >
-                    <StatRoles roles={roleData} />
-                  </Stack>
-                </HStack>
-
-                <Divider alignSelf={"center"} />
-                <Stack w={"auto"} height={"auto"}>
-                  <Stack
-                    direction={["row", "column"]}
-                    marginY={["5vh", 0]}
-                    marginTop={["1vh", 0]}
-                    marginX={["20%", "1vw"]}
-                  >
-                    <Text
-                      fontFamily={"Bebas Neue"}
-                      fontSize={[36, 48]}
-                      color={"#15172A"}
-                    >
-                      MATCH
-                    </Text>
-                    <Text
-                      fontFamily={"Bebas Neue"}
-                      fontSize={[36, 48]}
-                      color={"#15172A"}
-                    >
-                      History
-                    </Text>
-                  </Stack>
-                  <HStack>
-                    <Flex ml={["14%", "15%"]} mt={"-15%"}>
-                      <Box
-                        maxW={"max-content"}
-                        w={"max-content"}
-                        maxH={["max-content", "max-content"]}
-                        h={["max-content", "28.5vh"]}
-                        bg={"white"}
-                        rounded={"3xl"}
-                        overflow={"hidden"}
-                        overflowY={"auto"}
-                        alignSelf={"center"}
-                        alignContent={"center"}
-                        alignItems={"center"}
-                      >
-                        <Center>
-                        <Stack direction={["column","column", "row"]}>
-                          <VStack>
-                            {matchData
-                              .splice(0, Math.ceil(matchData.length / 2))
-                              .map((game) => (
-                                <MatchCard
-                                  champion={game[0]}
-                                  lvl={game[1]}
-                                  kills={game[2]}
-                                  deaths={game[3]}
-                                  assists={game[4]}
-                                  cs={game[5]}
-                                  time={game[6]}
-                                  lane={game[7]}
-                                  status={game[8]}
-                                  gameEnd={game[9]}
-                                  gameMode={game[10]}
-                                />
-                              ))}
-                          </VStack>
-                          <VStack>
-                            {matchData.map((game) => (
-                              <MatchCard
-                                champion={game[0]}
-                                lvl={game[1]}
-                                kills={game[2]}
-                                deaths={game[3]}
-                                assists={game[4]}
-                                cs={game[5]}
-                                time={game[6]}
-                                lane={game[7]}
-                                status={game[8]}
-                                gameEnd={game[9]}
-                                gameMode={game[10]}
-                              />
-                            ))}
-                          </VStack>
-                        </Stack>
-                        </Center>
-                      </Box>
-                    </Flex>
-                  </HStack>
-                </Stack>
-              </Box>
+              <StatCs sLp={ranked[0]?.leaguePoints.toString()} />
+              <StatRoles roles={roleData} />
             </Stack>
-          </Center>
+
+            <Divider />
+            <VStack w="full" height="full" alignItems="flex-start">
+              <Text fontFamily={"Bebas Neue"} fontSize={[36, 48]} color={"#15172A"}>
+                MATCH HISTORY
+              </Text>
+              <Grid
+                h="full"
+                w="full"
+                templateColumns={{
+                  base: "repeat(1, 1fr)",
+                  xl: "repeat(2, 1fr)",
+                }}
+                gap={4}
+              >
+                {matchData.map((game, i) => (
+                  <GridItem w="full" key={i}>
+                    <MatchCard
+                      champion={game[0]}
+                      lvl={game[1]}
+                      kills={game[2]}
+                      deaths={game[3]}
+                      assists={game[4]}
+                      cs={game[5]}
+                      time={game[6]}
+                      lane={game[7]}
+                      status={game[8]}
+                      gameEnd={game[9]}
+                      gameMode={game[10]}
+                    />
+                  </GridItem>
+                ))}
+              </Grid>
+            </VStack>
+          </Box>
         </Stack>
-        <Footer />
-      </Main>
+      </VStack>
+      <Footer />
     </Container>
   );
 };

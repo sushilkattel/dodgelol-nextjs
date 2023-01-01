@@ -10,10 +10,10 @@ export const ValSearchBtn = (props: ButtonProps) => (
     fontFamily={"Bebas Neue"}
     fontWeight={"light"}
     height={["6vh", "7.8vh"]}
-    _hover = {{bg: '#c95965'}}
-    fontSize={["sm","sm", "md","2xl"]}
-    rounded={'none'}
-    _outline={'1px dotted black'}
+    _hover={{ bg: "#c95965" }}
+    fontSize={["sm", "sm", "md", "2xl"]}
+    rounded={"none"}
+    _outline={"1px dotted black"}
     {...props}
   >
     Search

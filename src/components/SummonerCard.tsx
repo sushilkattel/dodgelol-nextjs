@@ -10,6 +10,7 @@ import {
   useColorModeValue,
   HStack,
   Divider,
+  VStack,
 } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
 
@@ -31,7 +32,7 @@ interface SummonerDetails {
   fLoss: string;
 }
 export const SummonerCard = (props: SummonerDetails) => {
-  const fontColor = "#15172A"
+  const fontColor = "#15172A";
   const [sQueue, setsQueue] = useState(props.sQueue);
   const [fQueue, setfQueue] = useState(props.fQueue);
   var summonerName = props.summonerName;
@@ -73,12 +74,10 @@ export const SummonerCard = (props: SummonerDetails) => {
   rank["Unranked"] = "https://dodgelol.gg/api/images/unranked.png";
   rank[""] = "https://dodgelol.gg/api/images/unranked.png";
   var sWinrate = Math.round(
-    (parseInt(props.sWin) / (parseInt(props.sWin) + parseInt(props.sLoss))) *
-      100
+    (parseInt(props.sWin) / (parseInt(props.sWin) + parseInt(props.sLoss))) * 100,
   );
   var fWinrate = Math.round(
-    (parseInt(props.fWin) / (parseInt(props.fWin) + parseInt(props.fLoss))) *
-      100
+    (parseInt(props.fWin) / (parseInt(props.fWin) + parseInt(props.fLoss))) * 100,
   );
   if (Number.isNaN(sWinrate)) {
     sWinrate = 0;
@@ -119,20 +118,11 @@ export const SummonerCard = (props: SummonerDetails) => {
 
   console.log("After: ", sQueue);
   return (
-    <Center py={6} mt={[0, "-1em"]}>
-      <Box
-        maxW={["80vw", "25vw"]}
-        w={["80vw", "25vw"]}
-        maxH={"100%"}
-        h={"auto"}
-        bg= "white"
-        boxShadow={"2xl"}
-        rounded={"lg"}
-        overflow={"hidden"}
-      >
+    <Box h="full">
+      <Box w="full" h="full" bg="white" boxShadow={"2xl"} rounded={"lg"} overflow={"hidden"}>
         <Image
-          h={"20vh"}
-          w={"full"}
+          h="200px"
+          w="full"
           src={"https://dodgelol.gg/api/images/bg.png"}
           objectFit={"cover"}
         />
@@ -145,80 +135,58 @@ export const SummonerCard = (props: SummonerDetails) => {
             }}
           />
         </Flex>
-        <Center>
-        <Box p={6} mb={5}>
-          <Stack spacing={0} align={"center"} mb={5}>
-            <Heading fontSize={"4xl"} fontWeight={500} fontFamily={"body"} color={fontColor}>
-              {summonerName}
-            </Heading>
-            <Text color={"gray.500"} fontSize={"2xl"}>
-              lvl {summonerLvl}
-            </Text>
-          </Stack>
-          <HStack>
-            <Stack spacing={0} >
-              <Center>
-                <Stack alignSelf={"baseline"} alignItems={"center"}>
-                  <Text
-                    fontFamily={"body"}
-                    fontSize={"2xl"}
-                    fontWeight={400}
-                    color={fontColor}
-                  >
-                    {sQueue}
-                  </Text>
-                  <Image
-                    src={rank[sTier]}
-                    objectFit="cover"
-                    width={"6em"}
-                    height={"7em"}
-                  />
-                  <Text fontSize={15} lineHeight={1} color={fontColor}>
-                    {sTier} {sRank}
-                  </Text>
-                  <Text fontSize={15} lineHeight={1} color={fontColor}>
-                    W: {sWin} | L: {sLoss}
-                  </Text>
-                  <Text fontSize={15} lineHeight={1} color={fontColor}>
-                    {sLp} LP
-                  </Text>
-                  <Text fontSize={15} lineHeight={1} color={fontColor}>
-                    {sWinrate}%
-                  </Text>
-                </Stack>
-              </Center>
-            </Stack>
-            <Center height="8em">
-              <Divider orientation="vertical" />
-            </Center>
-            <Stack spacing={0} align={"center"}>
-              <Text fontFamily={"body"} fontSize={"2xl"} fontWeight={400} color={fontColor}>
-                {fQueue}
-              </Text>
-              <Image
-                src={rank[fTier]}
-                objectFit="cover"
-                width={"6em"}
-                height={"7em"}
-              />
-              <Text fontSize={15} lineHeight={1.5} color={fontColor}>
-                {fTier} {fRank}
-              </Text>
-              <Text fontSize={15} lineHeight={1.5} color={fontColor}>
-                W: {fWin} | L: {fLoss}
-              </Text>
-              <Text fontSize={15} lineHeight={1.5} color={fontColor}>
-                {fLp} LP
-              </Text>
-              <Text fontSize={15} lineHeight={1.5} color={fontColor}>
-                {fWinrate}%
+        <Center h="full" w="full" p={4}>
+          <Box>
+            <Stack spacing={0} align={"center"} mb={5}>
+              <Heading fontSize={"4xl"} fontWeight={500} fontFamily={"body"} color={fontColor}>
+                {summonerName}
+              </Heading>
+              <Text color={"gray.500"} fontSize={"2xl"}>
+                lvl {summonerLvl}
               </Text>
             </Stack>
-          </HStack>
-        </Box>
+            <HStack spacing={6} w="full" justifyContent="space-between">
+              <VStack textAlign="center" spacing={2}>
+                <Text fontFamily={"body"} fontSize={"2xl"} fontWeight={400} color={fontColor}>
+                  {sQueue}
+                </Text>
+                <Image src={rank[sTier]} objectFit="cover" width={"6em"} height={"7em"} />
+                <Text fontSize={15} color={fontColor}>
+                  {sTier} {sRank}
+                </Text>
+                <Text fontSize={15} color={fontColor}>
+                  W: {sWin} | L: {sLoss}
+                </Text>
+                <Text fontSize={15} color={fontColor}>
+                  {sLp} LP
+                </Text>
+                <Text fontSize={15} color={fontColor}>
+                  {sWinrate}%
+                </Text>
+              </VStack>
+              <VStack textAlign="center" spacing={2}>
+                <Text fontFamily={"body"} fontSize={"2xl"} fontWeight={400} color={fontColor}>
+                  {fQueue}
+                </Text>
+                <Image src={rank[fTier]} objectFit="cover" width={"6em"} height={"7em"} />
+                <Text fontSize={15} color={fontColor}>
+                  {fTier} {fRank}
+                </Text>
+                <Text fontSize={15} color={fontColor}>
+                  W: {fWin} | L: {fLoss}
+                </Text>
+                <Text fontSize={15} color={fontColor}>
+                  {fLp} LP
+                </Text>
+                <Text fontSize={15} color={fontColor}>
+                  {fWinrate}%
+                </Text>
+              </VStack>
+            </HStack>
+          </Box>
         </Center>
       </Box>
-    </Center>
+    </Box>
   );
 };
 SummonerCard.defaultProps = {

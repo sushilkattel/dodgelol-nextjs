@@ -1,4 +1,4 @@
-import { extendTheme, ThemeConfig} from "@chakra-ui/react";
+import { extendTheme, ThemeConfig } from "@chakra-ui/react";
 import { createBreakpoints } from "@chakra-ui/theme-tools";
 
 const fonts = { mono: `'Menlo', monospace` };
@@ -10,12 +10,12 @@ const breakpoints = createBreakpoints({
   xl: "80em",
 });
 const config: ThemeConfig = {
-  initialColorMode: 'dark',
+  initialColorMode: "dark",
   useSystemColorMode: true,
 };
 
 const theme = extendTheme({
-  initialColorMode: 'dark',
+  initialColorMode: "dark",
   useSystemColorMode: false,
   config,
   styles: {

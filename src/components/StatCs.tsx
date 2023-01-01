@@ -8,7 +8,7 @@ interface SummonerData {
 }
 
 export const StatCs = (props: SummonerData) => {
-  const fontColor = "#15172A"
+  const fontColor = "#15172A";
   const percentage = (parseInt(props.sLp) / 100) * 360;
   const left = 100 - parseInt(props.sLp);
   const data = [
@@ -28,12 +28,18 @@ export const StatCs = (props: SummonerData) => {
   ];
   console.log(percentage);
   return (
-    <Stack w={"100%"} h={"100%"} ml={["20%", "-30%"]} mt={"-2vh"}>
+    <Stack
+      p={2}
+      rounded="md"
+      borderColor="gray.300"
+      borderWidth={1}
+      w={{ base: "full", lg: "50%" }}
+      h="300px"
+    >
       <style>
-        @import
-        url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
       </style>
-      <Text align={"center"} fontFamily={"Bebas Neue"} fontSize={20} color={fontColor}>
+      <Text fontFamily={"Bebas Neue"} fontSize={20} color={fontColor}>
         League Points
       </Text>
       <ResponsiveRadialBar

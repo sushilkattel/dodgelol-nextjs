@@ -5,11 +5,8 @@ import { summonerGameQuery } from "./apiUtils";
 import { getGameData, getIndex } from ".";
 
 //handles game data so it only returns whatever data is needed
-export const summonerMatch = async (
-  matchlist?: Array<string>,
-  puuid?: string
-): Promise<any> => {
-  const getAllGameData = matchlist.map(async (gameId) => {
+export const summonerMatch = async (matchlist?: Array<string>, puuid?: string): Promise<any> => {
+  const getAllGameData = matchlist.map(async gameId => {
     const response = await getGameData(gameId);
     return response;
   });
@@ -19,11 +16,8 @@ export const summonerMatch = async (
   return results;
 };
 //Gives roles from user from matches
-export const rolesMatchData = async (
-  matchData?: Array<any>,
-  puuid?: string
-) => {
-  const getDetailedData = matchData.map(async (game) => {
+export const rolesMatchData = async (matchData?: Array<any>, puuid?: string) => {
+  const getDetailedData = matchData.map(async game => {
     const index = getIndex(game, puuid);
     const summoner = game.info.participants[index];
     if (
@@ -80,10 +74,7 @@ export const rolesMatchData = async (
 };
 //Gives specific data from existing data
 //Data: [ChampName, ChampLvl, kills, deaths, assists, cs, timePlayed, lane, winBoolean, gameEndTime, gameMode]
-export const previewGameData = async (
-  matchData?: Array<any>,
-  puuid?: string
-) => {
+export const previewGameData = async (matchData?: Array<any>, puuid?: string) => {
   const queueIdList = {};
   queueIdList[420] = "Ranked Solo";
   queueIdList[440] = "Ranked Flex";
@@ -98,7 +89,7 @@ export const previewGameData = async (
   queueIdList[900] = "ARURF";
   queueIdList[400] = "NORMAL";
 
-  const getPreviewData = matchData.map(async (game) => {
+  const getPreviewData = matchData.map(async game => {
     let dataArray = [];
     const index = await getIndex(game, puuid);
     const summoner = game.info.participants[index];
@@ -113,13 +104,9 @@ export const previewGameData = async (
       summoner.lane,
       summoner.win,
       game.info.gameEndTimestamp,
-      queueIdList[game.info.queueId]
-    );
-    console.log(
-      "QUEUE NAMES: ",
       queueIdList[game.info.queueId],
-      game.info.queueId
     );
+    console.log("QUEUE NAMES: ", queueIdList[game.info.queueId], game.info.queueId);
     return dataArray;
   });
   const results = await Promise.all(getPreviewData);

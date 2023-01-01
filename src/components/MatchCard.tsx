@@ -117,165 +117,89 @@ export const MatchCard = (props: MatchDetails) => {
   }
   const rating = getRating();
   return (
-    <Flex p={["1vh", "1vh"]}>
+    <Box w="full">
       <style>
-        @import
-        url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
       </style>
       <link rel="stylesheet" href="https://use.typekit.net/ial4jci.css"></link>
-      <Box
-        maxW={["50vw", "25vw"]}
-        w={["50vw", "24.306vw"]}
-        maxH={["max-content", "max-content","25vh"]}
-        h={["max-content", "max-content","13vh"]}
-        bg={bgColor}
-        rounded={"3xl"}
-        overflow={"hidden"}
-      >
-        <Stack width={"100%"}>
-          <Text
-            fontFamily={"Bebas Neue"}
-            alignSelf={["center", "center"]}
-            mt={["0", "0.5vh"]}
-            color={"#355070"}
-            mb={"-2vh"}
-            fontSize={"1.25vw"}
-          >
+      <VStack w="full" bg={bgColor} rounded={"md"} overflow={"hidden"} p={4} h="full">
+        <HStack justifyContent="space-between" w="full">
+          <Text fontFamily={"Bebas Neue"} color={"#355070"}>
             {gameMode}
           </Text>
-          <Text
-            fontFamily={"source-sans-pro"}
-            alignSelf={["center", "center"]}
-            color={"#7E7E7E"}
-            mb={"-2vh"}
-            fontSize={[12, 8, 10, 12]}
-          >
+          <Text fontFamily={"source-sans-pro"} color={"#7E7E7E"}>
             {timeago}
           </Text>
-        </Stack>
-        <Stack direction={["column", "column", "row"]} mt={[0, "-0.6em"]}>
-          <Image
-            src={`https://ddragon.leagueoflegends.com/cdn/12.13.1/img/champion/${champion}.png`}
-            style={{ borderRadius: 25 }}
-            alignSelf={["center","center", "flex-start"]}
-            width={["15vw", "3.472vw"]}
-            mt={"0vh"}
-            ml={"0.5vw"}
-          />
-          <VStack
-            maxW={["initial", "4.514vw"]}
-            w={["initial", "4.514vw"]}
-            pt={"0.3em"}
-          >
-            <Text
-              fontFamily={"Bebas Neue"}
-              alignSelf={["center", "center", "flex-start"]}
-              mb={"-20%"}
-              fontSize={[20, 15, 20]}
-              color={"#355070"}
-            >
-              {props.champion}
-            </Text>
-            <Stack alignSelf={["center", "center", "flex-start"]}>
-              <Text
-                fontFamily={"source-sans-pro"}
-                alignSelf={["center", "center", "flex-start"]}
-                mb={"-40%"}
-                fontSize={[14, 10, 14]}
-                color={"#7E7E7E"}
-              >
-                Lvl {props.lvl}
-              </Text>
-            </Stack>
-            <Text
-              fontFamily={"source-sans-pro"}
-              alignSelf={["center", "center", "flex-start"]}
-              fontSize={[10, 9, 10]}
-              color={"#7E7E7E"}
-            >
-              {getTimePlayed()}
-            </Text>
-          </VStack>
-          <VStack width={["initial", "4.67vw"]}>
-            <Text
-              fontFamily={"Bebas Neue"}
-              alignSelf={["center", "center"]}
-              mt={["0", "0.6vh"]}
-              mb={"-2vh"}
-              fontSize={[20, 17, 20]}
-              color={"#F64545"}
-            >
-              {props.kills}/{props.deaths}/{props.assists}
-            </Text>
-            <Text
-              fontFamily={"source-sans-pro"}
-              alignSelf={["center", "center"]}
-              mt={"-2vh"}
-              fontSize={[14, 12, 14]}
-              color={"#7E7E7E"}
-            >
-              {getKDA()} KDA
-            </Text>
-            <Stack>
-              <Text
-                fontFamily={"Bebas Neue"}
-                alignSelf={["center", "center"]}
-                mt={"-1.4vh"}
-                color={"#355070"}
-                fontSize={[14, 12, 14]}
-              >
-                {getRating()}
-              </Text>
-            </Stack>
-          </VStack>
-          <VStack width={["initial", "5.5vw"]}>
-            <Text
-              fontFamily={"Bebas Neue"}
-              alignSelf={["center", "center"]}
-              mt={["0", "1vh"]}
-              mb={"-2vh"}
-              fontSize={[20,15, 20]}
-              color={"#355070"}
-            >
-              {props.cs} CS
-            </Text>
-            <Text
-              fontFamily={"source-sans-pro"}
-              alignSelf={["center", "center"]}
-              mt={"-2vh"}
-              color={"#7E7E7E"}
-              fontSize={[14,12, 14]}
-            >
-              ({getCs()})
-            </Text>
-          </VStack>
+        </HStack>
+        <Stack
+          textAlign="center"
+          direction={{ base: "column", md: "row" }}
+          w="full"
+          justifyContent="space-between"
+        >
           <Stack
-            height={["10vh", "20vh"]}
-            align={["center", "flex-start"]}
-            direction={["column", "column","row"]}
+            direction={{ base: "column", md: "row" }}
+            alignItems={{ base: "center", md: "flex-start" }}
+            justifyContent="space-between"
+            w={{ base: "full", md: "80%" }}
           >
-            <Divider
-              orientation={"vertical"}
-              ml={"-1em"}
-              mt={"-30"}
-              borderColor={divColor}
-              opacity={[0, "initial"]}
-            />
-            <Center>
-              <Text
-                align={"center"}
-                fontFamily={"Bebas Neue"}
-                fontSize={[40, 25, 40]}
-                color={wlColor}
-                ml={[0, "0.2em"]}
-              >
-                {wl}
+            <Stack
+              direction={{ base: "column", md: "row" }}
+              alignItems={{ base: "center", md: "flex-start" }}
+            >
+              <Image
+                src={`https://ddragon.leagueoflegends.com/cdn/12.13.1/img/champion/${champion}.png`}
+                w={{ base: "100px", md: "70px" }}
+                rounded="md"
+                h={{ base: "100px", md: "70px" }}
+              />
+              <VStack alignItems={{ base: "center", md: "flex-start" }} spacing={0}>
+                <Text fontFamily={"Bebas Neue"} color={"#355070"}>
+                  {props.champion}
+                </Text>
+                <Stack alignSelf={["center", "center", "flex-start"]}>
+                  <Text fontFamily={"source-sans-pro"} color={"#7E7E7E"}>
+                    Lvl {props.lvl}
+                  </Text>
+                </Stack>
+                <Text fontFamily={"source-sans-pro"} color={"#7E7E7E"}>
+                  {getTimePlayed()}
+                </Text>
+              </VStack>
+            </Stack>
+            <VStack alignItems="center" spacing={0}>
+              <Text fontFamily={"Bebas Neue"} color={"#F64545"}>
+                {props.kills}/{props.deaths}/{props.assists}
               </Text>
-            </Center>
+              <Text fontFamily={"source-sans-pro"} color={"#7E7E7E"}>
+                {getKDA()} KDA
+              </Text>
+              <Stack>
+                <Text fontFamily={"Bebas Neue"} color={"#355070"}>
+                  {getRating()}
+                </Text>
+              </Stack>
+            </VStack>
+            <VStack spacing={0}>
+              <Text fontFamily={"Bebas Neue"} color={"#355070"}>
+                {props.cs} CS
+              </Text>
+              <Text fontFamily={"source-sans-pro"} color={"#7E7E7E"}>
+                ({getCs()})
+              </Text>
+            </VStack>
           </Stack>
+          <Text
+            justifySelf="baseline"
+            fontFamily={"Bebas Neue"}
+            color={wlColor}
+            fontSize="xxx-large"
+          >
+            {wl}
+          </Text>
         </Stack>
-      </Box>
-    </Flex>
+      </VStack>
+    </Box>
   );
 };
 MatchCard.defaultProps = {
