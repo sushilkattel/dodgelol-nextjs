@@ -12,12 +12,13 @@ This project is used by the following repos:
 
 
 ## Deployment
-
+Make sure yarn is installed.
 To deploy this project run
 
 ```bash
-  npm i -f
-  npm run
+  yarn
+  yarn build
+  yarn start
 ```
 
 
