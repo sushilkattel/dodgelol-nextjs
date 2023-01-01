@@ -77,7 +77,9 @@ const Index = () => {
             </VStack>
           </Flex>
         </Stack>
+        <Stack pt={["60%", 0]} w={[0, "35%"]}>
         <Footer />
+        </Stack>
       </Main>
     </Container>
   );
