@@ -158,7 +158,8 @@ const SummonerDetails = () => {
           >
             <Stack
               h="full"
-              direction={{ base: "column", lg: "row" }}
+              direction={"row"}
+              overflowY={"scroll"}
               w="full"
               alignItems={{ base: "center", lg: "flex-start" }}
             >

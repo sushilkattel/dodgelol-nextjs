@@ -122,9 +122,9 @@ export const MatchCard = (props: MatchDetails) => {
         @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
       </style>
       <link rel="stylesheet" href="https://use.typekit.net/ial4jci.css"></link>
-      <VStack w="full" bg={bgColor} rounded={"md"} overflow={"hidden"} p={4} h="full">
+      <VStack w="full" bg={bgColor} rounded={"3xl"} overflow={"hidden"} p={4} h="full">
         <HStack justifyContent="space-between" w="full">
-          <Text fontFamily={"Bebas Neue"} color={"#355070"}>
+          <Text fontFamily={"Bebas Neue"} color={"#355070"} fontSize={"2xl"} >
             {gameMode}
           </Text>
           <Text fontFamily={"source-sans-pro"} color={"#7E7E7E"}>
@@ -150,11 +150,11 @@ export const MatchCard = (props: MatchDetails) => {
               <Image
                 src={`https://ddragon.leagueoflegends.com/cdn/12.13.1/img/champion/${champion}.png`}
                 w={{ base: "100px", md: "70px" }}
-                rounded="md"
+                rounded="full"
                 h={{ base: "100px", md: "70px" }}
               />
-              <VStack alignItems={{ base: "center", md: "flex-start" }} spacing={0}>
-                <Text fontFamily={"Bebas Neue"} color={"#355070"}>
+              <VStack alignItems={{ base: "center", md: "flex-start" }} spacing={-1}>
+                <Text fontFamily={"Bebas Neue"} color={"#355070"} fontSize={"2xl"}>
                   {props.champion}
                 </Text>
                 <Stack alignSelf={["center", "center", "flex-start"]}>
@@ -168,7 +168,7 @@ export const MatchCard = (props: MatchDetails) => {
               </VStack>
             </Stack>
             <VStack alignItems="center" spacing={0}>
-              <Text fontFamily={"Bebas Neue"} color={"#F64545"}>
+              <Text fontFamily={"Bebas Neue"} color={"#F64545"} fontSize={"2xl"}>
                 {props.kills}/{props.deaths}/{props.assists}
               </Text>
               <Text fontFamily={"source-sans-pro"} color={"#7E7E7E"}>
@@ -181,7 +181,7 @@ export const MatchCard = (props: MatchDetails) => {
               </Stack>
             </VStack>
             <VStack spacing={0}>
-              <Text fontFamily={"Bebas Neue"} color={"#355070"}>
+              <Text fontFamily={"Bebas Neue"} color={"#355070"} fontSize={"2xl"}>
                 {props.cs} CS
               </Text>
               <Text fontFamily={"source-sans-pro"} color={"#7E7E7E"}>
@@ -193,7 +193,8 @@ export const MatchCard = (props: MatchDetails) => {
             justifySelf="baseline"
             fontFamily={"Bebas Neue"}
             color={wlColor}
-            fontSize="xxx-large"
+            fontSize="5xl"
+            pr={[0,4]}
           >
             {wl}
           </Text>

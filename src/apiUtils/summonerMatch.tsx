@@ -28,6 +28,12 @@ export const rolesMatchData = async (matchData?: Array<any>, puuid?: string) => 
     ) {
       return '"ARAM"';
     }
+    else if (summoner.lane == "BOTTOM") {
+        if(index == 8) {
+          return '"BOTTOM"';
+        }
+        return '"SUPPORT"';
+    }
     return JSON.stringify(summoner.lane);
   });
   const results: string[] = await Promise.all(getDetailedData);
@@ -39,6 +45,7 @@ export const rolesMatchData = async (matchData?: Array<any>, puuid?: string) => 
     var bottom = 0;
     var jg = 0;
     var aram = 0;
+    var supp = 0;
     const roles = stringList;
     for (let i = 0; i < roles.length; i++) {
       console.log("ROLE: ", roles[i]);
@@ -50,13 +57,16 @@ export const rolesMatchData = async (matchData?: Array<any>, puuid?: string) => 
           mid++;
           break;
         case '"BOTTOM"':
-          bottom++;
+          bottom++
           break;
         case '"JUNGLE"':
           jg++;
           break;
         case '"ARAM"':
           aram++;
+          break;
+        case '"SUPPORT"':
+          supp++;
           break;
       }
     }
@@ -65,6 +75,7 @@ export const rolesMatchData = async (matchData?: Array<any>, puuid?: string) => 
     dict["bottom"] = bottom;
     dict["jg"] = jg;
     dict["aram"] = aram;
+    dict["supp"] = supp;
     return dict;
   };
   console.log("RESULT PRE DICT: ", results);

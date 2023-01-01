@@ -22,6 +22,10 @@ export const StatRoles = (props: SummonerData) => {
       lane: props.roles["bottom"],
     },
     {
+      map: "SUPPORT",
+      lane: props.roles["supp"],
+    },
+    {
       map: "JUNGLE",
       lane: props.roles["jg"],
     },
