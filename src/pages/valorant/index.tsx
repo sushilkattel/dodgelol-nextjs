@@ -84,10 +84,10 @@ const Index = () => {
             </Center>
           </Stack>
           <Center>
-            <Stack w={"max-content"} height={"100vh"}>
-              <Box p={4} bgColor={"#FF4655"} rounded={"2xl"} overflow={"hidden"} overflowY={"auto"}>
+            <Stack w={"full"}>
+              <Center>
                 <LeaderboardCard data={data} />
-              </Box>
+              </Center>
             </Stack>
           </Center>
         </Stack>
